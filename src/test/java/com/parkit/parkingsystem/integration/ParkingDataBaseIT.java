@@ -38,6 +38,10 @@ public class ParkingDataBaseIT {
         ticketDAO = new TicketDAO();
         ticketDAO.dataBaseConfig = dataBaseTestConfig;
         dataBasePrepareService = new DataBasePrepareService();
+    }
+
+    @AfterAll
+    private static void tearDown() {
 
     }
 
@@ -46,12 +50,6 @@ public class ParkingDataBaseIT {
         when(inputReaderUtil.readSelection()).thenReturn(1);
         when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
         dataBasePrepareService.clearDataBaseEntries();
-
-    }
-
-    @AfterAll
-    private static void tearDown() {
-
     }
 
     @Test
@@ -59,14 +57,14 @@ public class ParkingDataBaseIT {
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingService.processIncomingVehicle();
         //TODO: check that a ticket is actually saved in DB and Parking table is updated with availability
-        assertNotNull(ticketDAO.getTicket("ABCDEF"));
-       assertEquals(2, parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR));
+
+        assertNotNull(ticketDAO.getTicket("ABCDEF"));// Check ticket with RegNumber
+        assertEquals(2, parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR)); //Check that if slot 1 is busy, slot 2 is allocated
 
     }
 
-
     @Test
-    public void testParkingLotExit() {
+    public void testParkingLotExitCar() {
         testParkingACar();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingService.processExitingVehicle();
@@ -76,5 +74,4 @@ public class ParkingDataBaseIT {
         assertEquals(0.0, ticket.getPrice());
         assertNotNull(ticket.getOutTime());
     }
-
 }
