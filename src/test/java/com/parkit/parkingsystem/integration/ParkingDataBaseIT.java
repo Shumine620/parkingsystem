@@ -33,7 +33,7 @@ public class ParkingDataBaseIT {
     private static InputReaderUtil inputReaderUtil;
 
     @BeforeAll
-    private static void setUp() {
+    private static void setUp() throws Exception {
         parkingSpotDAO = new ParkingSpotDAO();
         parkingSpotDAO.dataBaseConfig = dataBaseTestConfig;
         ticketDAO = new TicketDAO();
@@ -43,7 +43,6 @@ public class ParkingDataBaseIT {
 
     @AfterAll
     private static void tearDown() {
-
     }
 
     @BeforeEach
@@ -51,7 +50,6 @@ public class ParkingDataBaseIT {
         when(inputReaderUtil.readSelection()).thenReturn(1);
         when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
         dataBasePrepareService.clearDataBaseEntries();
-
     }
 
     @Test
@@ -59,7 +57,7 @@ public class ParkingDataBaseIT {
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingService.processIncomingVehicle();
         //TODO: check that a ticket is actually saved in DB and Parking table is updated with availability
-
+Ticket ticket= ticketDAO.getTicket("ABCDEF");
         assertNotNull(ticketDAO.getTicket("ABCDEF"));// Check ticket with RegNumber
         assertEquals(2, parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR)); //Check that if slot 1 is busy, slot 2 is allocated
 
