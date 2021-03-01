@@ -46,32 +46,6 @@ public class ParkingDataBaseIT {
         when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
         dataBasePrepareService.clearDataBaseEntries();
     }
-
-    @Test
-    public void testParkingACar(){
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
-        parkingService.processIncomingVehicle();
-        //TODO: check that a ticket is actually saved in DB and Parking table is updated with availability
-        Ticket ticket = ticketDAO.getTicket("ABCDEF");
-        assertEquals(1,ticket.getId());// Check ticket with RegNumber
-        assertNotNull(parkingSpotDAO);
-        ParkingSpot parkingSpot = ticket.getParkingSpot(); //Check ticket related to the parking spot
-        assertEquals(2, parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR)); //Check that if slot 1 is busy, slot 2 is allocated
-        assertFalse(ticketDAO.getTicket("ABCDEF").getParkingSpot().isAvailable());
-    }
-
-
-    @Test
-    public void testParkingLotExitCar() throws IOException, ClassNotFoundException {
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
-        parkingService.processExitingVehicle();
-        //TODO: check that the fare generated and out time are populated correctly in the database
-        Assertions.assertEquals(1, parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR));
-        Ticket ticket = ticketDAO.getTicket("ABCDEF");
-        Assertions.assertEquals(0.0, ticket.getPrice());
-        assertNotNull(ticket.getOutTime());
-    }
-
     @AfterAll
     private static void tearDown() {
         parkingSpotDAO = null;
@@ -79,4 +53,42 @@ public class ParkingDataBaseIT {
         dataBasePrepareService.clearDataBaseEntries();
         dataBasePrepareService = null;
     }
+
+    @Test
+    public void testParkingACar(){
+        //GIVEN
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+
+        //WHEN
+        parkingService.processIncomingVehicle();
+        //TODO: check that a ticket is actually saved in DB and Parking table is updated with availability
+        Ticket ticket = ticketDAO.getTicket("ABCDEF");
+
+        //THEN
+        assertEquals(1,ticket.getId());// Check ticket with RegNumber
+        assertNotNull(parkingSpotDAO);
+        ParkingSpot parkingSpot = ticket.getParkingSpot(); //Check ticket related to the parking spot
+                assertEquals(2, parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR)); //Check that if slot 1 is busy, slot 2 is allocated
+        assertFalse(ticketDAO.getTicket("ABCDEF").getParkingSpot().isAvailable());
+    }
+
+
+    @Test
+    public void testParkingLotExitCar() throws IOException, ClassNotFoundException {
+
+        //GIVEN
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+
+        //WHEN
+        parkingService.processExitingVehicle();
+        //TODO: check that the fare generated and out time are populated correctly in the database
+
+        //THEN
+        Assertions.assertEquals(1, parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR));
+        Ticket ticket = ticketDAO.getTicket("ABCDEF");
+        Assertions.assertEquals(0.0, ticket.getPrice());
+        assertNotNull(ticket.getOutTime());
+    }
+
+
 }
