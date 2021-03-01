@@ -19,6 +19,7 @@ public class FareCalculatorServiceTest {
     private static FareCalculatorService fareCalculatorService;
     private Ticket ticket;
 
+
     @BeforeAll
     private static void setUp() {
         fareCalculatorService = new FareCalculatorService();
@@ -31,6 +32,7 @@ public class FareCalculatorServiceTest {
 
     @Test
     public void calculateFareCar(){ //One hour park for a car
+        //GIVEN
         Date inTime = new Date();
         inTime.setTime( System.currentTimeMillis() - (60 * 60 * 1000));
         Date outTime = new Date();
@@ -39,7 +41,10 @@ public class FareCalculatorServiceTest {
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
         ticket.setParkingSpot(parkingSpot);
+
+        //WHEN
         fareCalculatorService.calculateFare(ticket);
+        //THEN
         assertEquals(ticket.getPrice(), Fare.CAR_RATE_PER_HOUR);
     }
 

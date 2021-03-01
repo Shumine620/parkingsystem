@@ -28,4 +28,6 @@ public class FareCalculatorService {
             default: throw new IllegalArgumentException("Unknown Parking Type");
         }
     }
+
+
 }
