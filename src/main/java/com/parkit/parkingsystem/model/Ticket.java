@@ -9,7 +9,7 @@ public class Ticket {
     private double price;
     private Date inTime;
     private Date outTime;
-    private boolean ReccurentUser = false;
+   // private boolean ReccurentUser = false;
 
     public int getId() {
         return id;
@@ -59,9 +59,9 @@ public class Ticket {
         this.outTime = outTime;
     }
 
-    public boolean getReccurentUser() {return this.ReccurentUser; }
+    /**public boolean getReccurentUser() {return this.ReccurentUser; }
 
-    public void setReccurentUser(boolean reccurentUser) {
+   public void setReccurentUser(boolean reccurentUser) {
         ReccurentUser = reccurentUser;
-    }
+    }*/
 }
