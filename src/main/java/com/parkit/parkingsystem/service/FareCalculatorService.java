@@ -18,10 +18,12 @@ public class FareCalculatorService {
         //TODO: Some tests are failing here. Need to check if this logic is correct
         double duration = (outHour - inHour) / (60 * 60 * 1000);// Convert duration in milliseconds
 
-        if (duration <= 0.5)
+        if (duration <= 0.5) {
             ticket.setPrice(0.0);
-        public static void discount{ (ticket.getReccurentUser()) {
-            ticket.setPrice(duration * Fare.PERCENTAGE_DISCOUNT);
+        }
+        public void calculateDiscount(Ticket ticket, double discount){
+            calculateFare(ticket);
+            ticket.setPrice(ticket.getPrice() * Fare.PERCENTAGE_DISCOUNT);
         }
 
         switch (ticket.getParkingSpot().getParkingType()) {
