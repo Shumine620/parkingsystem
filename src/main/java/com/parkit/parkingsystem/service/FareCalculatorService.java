@@ -13,14 +13,16 @@ public class FareCalculatorService {
             throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime().toString());
         }
 
-        //TODO: Some tests are failing here. Need to check if this logic is correct
+        /**TODO: Some tests are failing here. Need to check if this logic is correct*/
         float duration = (ticket.getOutTime().getTime() - ticket.getInTime().getTime());
         duration = duration / (60 * 60 * 1000);// Convert duration in milliseconds
 
-        if (duration <= 0.5 ) {
+        //Free parking under 0.5hour
+        if (duration <= 0.5) {
             ticket.setPrice(0.0);
-            return;}
-
+            return;
+        }
+        //Normal fare above 0.5hour (check to remove 30minutes)
         switch (ticket.getParkingSpot().getParkingType()) {
             case CAR: {
                 ticket.setPrice(duration * Fare.CAR_RATE_PER_HOUR);
@@ -33,17 +35,15 @@ public class FareCalculatorService {
             default:
                 throw new IllegalArgumentException("Unknown Parking Type");
         }
+
+        /**Discount for recurrent user
         TicketDAO ticketRecurrent = new TicketDAO();
         if (ticketRecurrent.ticketNum(ticket.getVehicleRegNumber()) > 1) {
-            double discount = duration * 0.95;
+            double discountRate = duration * 0.95;
         }
-
+        public void calculateDiscount (Ticket ticket){
+            calculateFare(ticket);
+            ticket.setPrice(ticket.getPrice() * Fare.PERCENTAGE_DISCOUNT);
+        }*/
     }
-    }
-
-/**
- * public void calculateDiscount (Ticket ticket, double discount){
- * calculateFare(ticket);
- * ticket.setPrice(ticket.getPrice() * Fare.PERCENTAGE_DISCOUNT);
- * }
- */
+}
