@@ -166,7 +166,7 @@ public class FareCalculatorServiceTest {
         fareCalculatorService.calculateFare(ticket);
         assertEquals( 0 , ticket.getPrice());
     }
-    @Test
+  @Test
     public void calculateDiscountFareCarForRecurrentUser(){//Discount Driver Fees
         Date inTime = new Date();
         inTime.setTime( System.currentTimeMillis() - (60 * 60 * 1000) );
@@ -178,10 +178,10 @@ public class FareCalculatorServiceTest {
         ticket.setVehicleRegNumber("ABCDEF");
         ticket.setParkingSpot(parkingSpot);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals( (Fare.CAR_RATE_PER_HOUR)*5/100 , ticket.getPrice());
+        assertEquals( (Fare.CAR_RATE_PER_HOUR)*0.05 , ticket.getPrice());
     }
 
-    @Test
+   @Test
     public void calculateDiscountFareBikeForRecurrentUser(){//Discount Biker Fees
         Date inTime = new Date();
         inTime.setTime( System.currentTimeMillis() - ( 60 * 60 * 1000) );
@@ -193,6 +193,6 @@ public class FareCalculatorServiceTest {
         ticket.setVehicleRegNumber("ABCDEF");
         ticket.setParkingSpot(parkingSpot);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals( (Fare.BIKE_RATE_PER_HOUR)*5/100 , ticket.getPrice());
+        assertEquals( (Fare.BIKE_RATE_PER_HOUR)*0.05 , ticket.getPrice());
     }
 }

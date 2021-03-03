@@ -13,7 +13,6 @@ public class FareCalculatorService {
             throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime().toString());
         }
 
-        /**TODO: Some tests are failing here. Need to check if this logic is correct*/
         float duration = (ticket.getOutTime().getTime() - ticket.getInTime().getTime());
         duration = duration / (60 * 60 * 1000);// Convert duration in milliseconds
 
@@ -36,14 +35,13 @@ public class FareCalculatorService {
                 throw new IllegalArgumentException("Unknown Parking Type");
         }
 
-        /**Discount for recurrent user
+        //Discount for recurrent user
         TicketDAO ticketRecurrent = new TicketDAO();
+
         if (ticketRecurrent.ticketNum(ticket.getVehicleRegNumber()) > 1) {
-            double discountRate = duration * 0.95;
-        }
-        public void calculateDiscount (Ticket ticket){
-            calculateFare(ticket);
             ticket.setPrice(ticket.getPrice() * Fare.PERCENTAGE_DISCOUNT);
-        }*/
+        }
+
     }
 }
+
