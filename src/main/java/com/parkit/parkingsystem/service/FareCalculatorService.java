@@ -17,8 +17,8 @@ public class FareCalculatorService {
         double duration = (ticket.getOutTime().getTime() - ticket.getInTime().getTime());
         duration = duration / (60 * 60 * 1000);// Convert duration in milliseconds
 
-        if (duration <= 0.5) {
-            ticket.setPrice(0.0);
+        if (duration <= (0.5)) {
+           ticket.setPrice(0.0);
         }
 
         switch (ticket.getParkingSpot().getParkingType()) {
@@ -32,12 +32,13 @@ public class FareCalculatorService {
             }
             default:
                 throw new IllegalArgumentException("Unknown Parking Type");
+        } TicketDAO ticketRecurrent = new TicketDAO();
+        if (ticketRecurrent.ticketNum(ticket.getVehicleRegNumber())>1) {
+          double discount = duration *0.95;
         }
-        TicketDAO ticketRecurent = new TicketDAO();
-        if (ticketRecurent.ticketNum(ticket.getVehicleRegNumber())>1) {
-            duration = duration * 0.05;
-        }
+
     }
+
 }
 /**
  * public void calculateDiscount (Ticket ticket, double discount){
