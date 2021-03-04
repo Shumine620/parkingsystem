@@ -77,7 +77,7 @@ public class ParkingDataBaseIT {
 
         //GIVEN
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
-
+        parkingService.processIncomingVehicle();
         //WHEN
         parkingService.processExitingVehicle();
         //TODO: check that the fare generated and out time are populated correctly in the database
