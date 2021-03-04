@@ -1,20 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: com.parkit.parkingsystem.FareCalculatorServiceTest
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 1.562 s <<< FAILURE! - in com.parkit.parkingsystem.FareCalculatorServiceTest
-calculateDiscountFareBikeForRecurrentUser  Time elapsed: 0.047 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <0.05> but was: <1.0>
+Tests run: 12, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 34.453 s <<< FAILURE! - in com.parkit.parkingsystem.FareCalculatorServiceTest
+calculateDiscountFareBikeForRecurrentUser  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <0.95> but was: <1.0>
 	at com.parkit.parkingsystem.FareCalculatorServiceTest.calculateDiscountFareBikeForRecurrentUser(FareCalculatorServiceTest.java:196)
 
-calculateFareBikeWithLessThan30MinutesParkingTime  Time elapsed: 0.015 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <0.0> but was: <0.3333333333333333>
-	at com.parkit.parkingsystem.FareCalculatorServiceTest.calculateFareBikeWithLessThan30MinutesParkingTime(FareCalculatorServiceTest.java:167)
-
-calculateDiscountFareCarForRecurrentUser  Time elapsed: 0.016 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <0.075> but was: <1.5>
+calculateDiscountFareCarForRecurrentUser  Time elapsed: 0 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1.425> but was: <1.5>
 	at com.parkit.parkingsystem.FareCalculatorServiceTest.calculateDiscountFareCarForRecurrentUser(FareCalculatorServiceTest.java:181)
-
-calculateFareCarWithLessThan30MinutesParkingTime  Time elapsed: 0.031 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <0.0> but was: <0.5>
-	at com.parkit.parkingsystem.FareCalculatorServiceTest.calculateFareCarWithLessThan30MinutesParkingTime(FareCalculatorServiceTest.java:153)
 
