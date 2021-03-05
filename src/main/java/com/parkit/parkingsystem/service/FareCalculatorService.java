@@ -12,19 +12,23 @@ public class FareCalculatorService {
         if ((ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime()))) {
             throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime().toString());
         }
+        long inHour = ticket.getInTime().getTime();
+        long outHour = ticket.getOutTime().getTime();
 
-        float duration = (ticket.getOutTime().getTime() - ticket.getInTime().getTime());
-        duration = duration / (60 * 60 * 1000);// Convert duration in milliseconds
+        double duration = (double) (outHour - inHour)/ (60 * 60 * 1000);// Convert duration in milliseconds then in hour
+
 
         //Free parking under 0.5hour
-        if (duration <= 0.5) {
-            ticket.setPrice(0.0);
-            return;
-        }
+        if (duration < 0.5) {
+           duration = 0;
+       }else{ duration = duration - 0.5;
+            }
+
+
         //Normal fare above 0.5hour (check to remove 30minutes)
         switch (ticket.getParkingSpot().getParkingType()) {
             case CAR: {
-                ticket.setPrice(duration * Fare.CAR_RATE_PER_HOUR);
+                ticket.setPrice(duration  * Fare.CAR_RATE_PER_HOUR);
                 break;
             }
             case BIKE: {
@@ -36,12 +40,14 @@ public class FareCalculatorService {
         }
 
         //Discount for recurrent user
-        TicketDAO ticketRecurrent = new TicketDAO();
+       // TicketDAO ticketRecurrent = new TicketDAO();
 
-        if (ticketRecurrent.ticketNum(ticket.getVehicleRegNumber()) > 1) {
-            ticket.setPrice(ticket.getPrice() * Fare.PERCENTAGE_DISCOUNT);
+        if (ticket.getReccurentUser()> 1) {
+           ticket.setPrice(duration * Fare.PERCENTAGE_DISCOUNT );
         }
 
     }
+
+
 }
 

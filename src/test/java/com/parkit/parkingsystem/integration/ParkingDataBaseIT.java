@@ -53,14 +53,13 @@ public class ParkingDataBaseIT {
         dataBasePrepareService = null;
     }
 
-    @Test
+    @Test  //Check that a ticket is actually saved in DB and Parking table is updated with availability
     public void testParkingACar(){
         //GIVEN
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
 
         //WHEN
         parkingService.processIncomingVehicle();
-        //TODO: check that a ticket is actually saved in DB and Parking table is updated with availability
         Ticket ticket = ticketDAO.getTicket("ABCDEF");
 
         //THEN
@@ -72,19 +71,19 @@ public class ParkingDataBaseIT {
     }
 
 
-    @Test
+    @Test  //Check that the fare generated and out time are populated correctly in the database
     public void testParkingLotExitCar() throws IOException, ClassNotFoundException {
 
         //GIVEN
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingService.processIncomingVehicle();
+        Ticket ticket;
+
         //WHEN
         parkingService.processExitingVehicle();
-        //TODO: check that the fare generated and out time are populated correctly in the database
-
+        ticket = ticketDAO.getTicket("ABCEDF");
         //THEN
         Assertions.assertEquals(1, parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR));
-        Ticket ticket = ticketDAO.getTicket("ABCDEF");
         Assertions.assertEquals(0.0, ticket.getPrice());
         assertNotNull(ticket.getOutTime());
     }
