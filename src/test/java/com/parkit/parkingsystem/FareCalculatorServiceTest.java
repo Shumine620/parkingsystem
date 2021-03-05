@@ -88,7 +88,7 @@ public class FareCalculatorServiceTest {
     @Test
     public void calculateFareBikeWithLessThanOneHourParkingTime(){
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - (  45 * 60 * 1000) );//45 minutes parking time should give 3/4th parking fare
+        inTime.setTime( System.currentTimeMillis() - ( 45 * 60 * 1000) );//45 minutes parking time should give 3/4th parking fare
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
 
@@ -96,7 +96,7 @@ public class FareCalculatorServiceTest {
         ticket.setOutTime(outTime);
         ticket.setParkingSpot(parkingSpot);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals(((0.75 -0.5) * Fare.BIKE_RATE_PER_HOUR), ticket.getPrice() );
+        assertEquals(((0.75-0.25) * Fare.BIKE_RATE_PER_HOUR), ticket.getPrice() );
     }
 
     @Test
@@ -179,21 +179,25 @@ public class FareCalculatorServiceTest {
         ticket.setVehicleRegNumber("ABCDEF");
         ticket.setParkingSpot(parkingSpot);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals((( (Fare.CAR_RATE_PER_HOUR)*(1-.05))-( Fare.CAR_RATE_PER_HOUR)*5/100) , ticket.getPrice());
+        assertEquals((((Fare.CAR_RATE_PER_HOUR)*(1-0.5))-(Fare.CAR_RATE_PER_HOUR)*(1-0.5)*5/100 ), ticket.getPrice());
     }
 
     @Test
     public void calculateDiscountFareBikeForRecurrentUser(){//Discount Biker Fees
+        //GIVEN
         Date inTime = new Date();
         inTime.setTime( System.currentTimeMillis() - ( 60 * 60 * 1000) );
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
-       ticket.setReccurentUser();
+
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
         ticket.setVehicleRegNumber("ABCDEF");
         ticket.setParkingSpot(parkingSpot);
+        //WHEN
+        ticket.setReccurentUser(2);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals( ( ((Fare.BIKE_RATE_PER_HOUR)*(1-.05))-(Fare.BIKE_RATE_PER_HOUR)*5/100 ), ticket.getPrice());
+        //THEN
+        assertEquals((((Fare.BIKE_RATE_PER_HOUR)*(1-0.5))-(Fare.BIKE_RATE_PER_HOUR)*(1-0.5)*5/100 ), ticket.getPrice());
     }
 }

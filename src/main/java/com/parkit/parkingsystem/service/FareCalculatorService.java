@@ -4,6 +4,8 @@ import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.dao.TicketDAO;
 import com.parkit.parkingsystem.model.Ticket;
 
+import static java.lang.Math.round;
+
 
 public class FareCalculatorService {
 
@@ -15,13 +17,13 @@ public class FareCalculatorService {
         long inHour = ticket.getInTime().getTime();
         long outHour = ticket.getOutTime().getTime();
 
-        double duration = (double) (outHour - inHour)/ (60 * 60 * 1000);// Convert duration in milliseconds then in hour
+        float duration =  (outHour - inHour)/ (60 * 60 * 1000);// Convert duration in milliseconds then in hour
 
 
         //Free parking under 0.5hour
         if (duration < 0.5) {
            duration = 0;
-       }else{ duration = duration - 0.5;
+       }else{ duration = (float) (duration - 0.5);
             }
 
 
@@ -40,10 +42,10 @@ public class FareCalculatorService {
         }
 
         //Discount for recurrent user
-       // TicketDAO ticketRecurrent = new TicketDAO();
+       TicketDAO ticketRecurrent = new TicketDAO();
 
         if (ticket.getReccurentUser()> 1) {
-           ticket.setPrice(duration * Fare.PERCENTAGE_DISCOUNT );
+          round(ticket.setPrice(ticket.getPrice() - (ticket.getPrice()*Fare.PERCENTAGE_DISCOUNT/100)));
         }
 
     }
