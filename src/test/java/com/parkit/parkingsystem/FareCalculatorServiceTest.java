@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+import java.sql.SQLException;
 import java.util.Date;
 
 public class FareCalculatorServiceTest {
@@ -33,39 +34,39 @@ public class FareCalculatorServiceTest {
     }
 
     @Test
-    public void calculateFareCar(){
+    public void calculateFareCar() throws SQLException, ClassNotFoundException {
         Date inTime = new Date();
-        inTime.setTime((System.currentTimeMillis() - (  60 * 60 * 1000)));
+        inTime.setTime((System.currentTimeMillis() - (60 * 60 * 1000)));
         Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
 
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
         ticket.setParkingSpot(parkingSpot);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals(Fare.CAR_RATE_PER_HOUR *(1-0.5), ticket.getPrice());
+        assertEquals(Fare.CAR_RATE_PER_HOUR* (1 - 0.5) , ticket.getPrice());
     }
 
     @Test
-    public void calculateFareBike(){
+    public void calculateFareBike() throws SQLException, ClassNotFoundException {
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - (  60 * 60 * 1000) );
+        inTime.setTime(System.currentTimeMillis() - (60 * 60 * 1000));
         Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, false);
 
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
         ticket.setParkingSpot(parkingSpot);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals(Fare.BIKE_RATE_PER_HOUR *(1-0.5), ticket.getPrice());
+        assertEquals(Fare.BIKE_RATE_PER_HOUR * (1 - 0.5), ticket.getPrice());
     }
 
     @Test
-    public void calculateFareUnknownType(){
+    public void calculateFareUnknownType() {
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - (  60 * 60 * 1000) );
+        inTime.setTime(System.currentTimeMillis() - (60 * 60 * 1000));
         Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, null,false);
+        ParkingSpot parkingSpot = new ParkingSpot(1, null, false);
 
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
@@ -74,11 +75,11 @@ public class FareCalculatorServiceTest {
     }
 
     @Test
-    public void calculateFareBikeWithFutureInTime(){
+    public void calculateFareBikeWithFutureInTime() {
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() + (  60 * 60 * 1000) );
+        inTime.setTime(System.currentTimeMillis() + (60 * 60 * 1000));
         Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, false);
 
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
@@ -87,93 +88,105 @@ public class FareCalculatorServiceTest {
     }
 
     @Test
-    public void calculateFareBikeWithLessThanOneHourParkingTime(){
+    public void calculateFareBikeWithLessThanOneHourParkingTime() throws ClassNotFoundException, SQLException {
+        //GIVEN
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - ( 45 * 60 * 1000) );//45 minutes parking time should give 3/4th parking fare
+        inTime.setTime(System.currentTimeMillis() - (45 * 60 * 1000));//45 minutes parking time should give 3/4th parking fare
         Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, false);
+
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+
+        //WHEN
+        fareCalculatorService.calculateFare(ticket);
+
+        //THEN
+        assertEquals(((0.75-0.5) * Fare.BIKE_RATE_PER_HOUR), ticket.getPrice() );
+    }
+
+    @Test
+    public void calculateFareCarWithLessThanOneHourParkingTime() throws SQLException, ClassNotFoundException {
+        //GIVEN
+        Date inTime = new Date();
+        inTime.setTime(System.currentTimeMillis() - (45 * 60 * 1000));//45 minutes parking time should give 3/4th parking fare
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
+
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+
+        //WHEN
+        fareCalculatorService.calculateFare(ticket);
+
+        //THEN
+        assertEquals(((0.75 - 0.5) * Fare.CAR_RATE_PER_HOUR), ticket.getPrice());
+    }
+
+    @Test
+    public void calculateFareCarWithMoreThanADayParkingTime() throws SQLException, ClassNotFoundException {
+        Date inTime = new Date();
+        inTime.setTime(System.currentTimeMillis() - (24 * 60 * 60 * 1000));//24 hours parking time should give 24 * parking fare per hour
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
 
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
         ticket.setParkingSpot(parkingSpot);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals(((0.75-0.25) * Fare.BIKE_RATE_PER_HOUR), ticket.getPrice() );
+        assertEquals(((24 - 0.5) * Fare.CAR_RATE_PER_HOUR), ticket.getPrice());
     }
 
     @Test
-    public void calculateFareCarWithLessThanOneHourParkingTime(){
+    public void calculateFareBikeWithMoreThanADayParkingTime() throws SQLException, ClassNotFoundException {
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - (  45 * 60 * 1000) );//45 minutes parking time should give 3/4th parking fare
+        inTime.setTime(System.currentTimeMillis() - (24 * 60 * 60 * 1000));
         Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, false);
 
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
         ticket.setParkingSpot(parkingSpot);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals( ((0.75 -0.5) * Fare.CAR_RATE_PER_HOUR) , ticket.getPrice());
+        assertEquals(((24 - 0.5) * Fare.BIKE_RATE_PER_HOUR), ticket.getPrice());
     }
 
     @Test
-    public void calculateFareCarWithMoreThanADayParkingTime(){
+    public void calculateFareCarWithLessThan30MinutesParkingTime() throws SQLException, ClassNotFoundException {//Free parking
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - (  24 * 60 * 60 * 1000) );//24 hours parking time should give 24 * parking fare per hour
+        inTime.setTime(System.currentTimeMillis() - (20 * 60 * 1000));
         Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
 
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
         ticket.setParkingSpot(parkingSpot);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals( ((24 -0.5) * Fare.CAR_RATE_PER_HOUR) , ticket.getPrice());
+        assertEquals(0, ticket.getPrice());
     }
+
     @Test
-    public void calculateFareBikeWithMoreThanADayParkingTime(){
+    public void calculateFareBikeWithLessThan30MinutesParkingTime() throws SQLException, ClassNotFoundException {//Free parking
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - (24 * 60 * 60 * 1000) );
+        inTime.setTime(System.currentTimeMillis() - (20 * 60 * 1000));
         Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, false);
 
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
         ticket.setParkingSpot(parkingSpot);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals( ((24 -0.5) * Fare.BIKE_RATE_PER_HOUR), ticket.getPrice());
+        assertEquals(0, ticket.getPrice());
     }
 
     @Test
-    public void calculateFareCarWithLessThan30MinutesParkingTime(){//Free parking
+    public void calculateDiscountFareCarForRecurrentUser() throws SQLException, ClassNotFoundException {//Discount Driver Fees
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - (  20 * 60 * 1000) );
+        inTime.setTime(System.currentTimeMillis() - (60 * 60 * 1000));
         Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
-
-        ticket.setInTime(inTime);
-        ticket.setOutTime(outTime);
-        ticket.setParkingSpot(parkingSpot);
-        fareCalculatorService.calculateFare(ticket);
-        assertEquals( 0 , ticket.getPrice());
-    }
-
-    @Test
-    public void calculateFareBikeWithLessThan30MinutesParkingTime(){//Free parking
-        Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - ( 20 * 60 * 1000) );
-        Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
-
-        ticket.setInTime(inTime);
-        ticket.setOutTime(outTime);
-        ticket.setParkingSpot(parkingSpot);
-        fareCalculatorService.calculateFare(ticket);
-        assertEquals( 0 , ticket.getPrice());
-    }
-    @Test
-    public void calculateDiscountFareCarForRecurrentUser(){//Discount Driver Fees
-        Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - (60 * 60 * 1000) );
-        Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
 
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
@@ -181,17 +194,17 @@ public class FareCalculatorServiceTest {
         ticket.setParkingSpot(parkingSpot);
         ticket.setReccurentUser(2);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals((Fare.CAR_RATE_PER_HOUR * (1-0.5))-(Fare.CAR_RATE_PER_HOUR * (1-0.5)*5/100),ticket.getPrice());
+        assertEquals((Fare.CAR_RATE_PER_HOUR * (1 - 0.5)) - (Fare.CAR_RATE_PER_HOUR * (1 - 0.5) * 5 / 100), ticket.getPrice());
 
     }
 
     @Test
-    public void calculateDiscountFareBikeForRecurrentUser(){//Discount Biker Fees
+    public void calculateDiscountFareBikeForRecurrentUser() throws SQLException, ClassNotFoundException {//Discount Biker Fees
         //GIVEN
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - ( 60 * 60 * 1000) );
+        inTime.setTime(System.currentTimeMillis() - (60 * 60 * 1000));
         Date outTime = new Date();
-        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, false);
 
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);
@@ -201,6 +214,6 @@ public class FareCalculatorServiceTest {
         ticket.setReccurentUser(2);
         fareCalculatorService.calculateFare(ticket);
         //THEN
-        assertEquals(((Fare.BIKE_RATE_PER_HOUR)*(1-0.5))-(Fare.BIKE_RATE_PER_HOUR)*(1-0.5)*5/100 , ticket.getPrice());
+        assertEquals(((Fare.BIKE_RATE_PER_HOUR) * (1 - 0.5)) - (Fare.BIKE_RATE_PER_HOUR) * (1 - 0.5) * 5 / 100, ticket.getPrice());
     }
 }

@@ -19,6 +19,7 @@ public class TicketDAO {
 
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
+
     public boolean saveTicket(Ticket ticket) {
         Connection con = null;
         try {
@@ -71,6 +72,7 @@ public class TicketDAO {
 
     public boolean updateTicket(Ticket ticket) {
         Connection con = null;
+
         try {
             con = dataBaseConfig.getConnection();
             PreparedStatement ps = con.prepareStatement(DBConstants.UPDATE_TICKET);
@@ -86,5 +88,33 @@ public class TicketDAO {
         }
         return false;
     }
+    public boolean isReccurentUser(String vehicleRegNumber, Ticket ticket) {
 
-    }
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        boolean isReccurentUser = false;
+        try {
+            con = dataBaseConfig.getConnection();
+            ps = con.prepareStatement(DBConstants.IS_RECCURENT_USER);
+            ps.setString(1, vehicleRegNumber);
+                      ps.setTimestamp(2, new Timestamp(ticket.getOutTime().getTime()));
+            ps.setInt(3, ticket.getId());
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                isReccurentUser = rs.getBoolean(1);
+            }
+            return isReccurentUser;
+        } catch (Exception ex) {
+            logger.error("Error fetching next available slot", ex);
+            return false;
+        } finally {
+            dataBaseConfig.closeResultSet(rs);
+            dataBaseConfig.closePreparedStatement(ps);
+            dataBaseConfig.closeConnection(con);
+        }
+   }
+
+
+}

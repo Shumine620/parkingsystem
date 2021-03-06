@@ -87,26 +87,5 @@ import java.sql.Timestamp;
 <span class="nc" id="L87">        return false;</span>
     }
 
-    public int ticketNum(String vehicleRegNumber) {
-
-<span class="fc" id="L92">        int ticketNum = 0;</span>
-<span class="fc" id="L93">        Connection con = null;</span>
-        try {
-<span class="fc" id="L95">            con = dataBaseConfig.getConnection();</span>
-<span class="fc" id="L96">            PreparedStatement ps = con.prepareStatement(DBConstants.GET_NUMBER_TICKET);</span>
-<span class="fc" id="L97">            ps.setString(1, vehicleRegNumber);</span>
-<span class="fc" id="L98">            ResultSet rs = ps.executeQuery();</span>
-<span class="pc bpc" id="L99" title="1 of 2 branches missed.">            if (rs.next()) {</span>
-<span class="fc" id="L100">                ticketNum = rs.getInt(1);</span>
-            }
-<span class="fc" id="L102">            dataBaseConfig.closeResultSet(rs);</span>
-<span class="fc" id="L103">            dataBaseConfig.closePreparedStatement(ps);</span>
-<span class="fc" id="L104">        } catch (Exception ex) {</span>
-<span class="fc" id="L105">            logger.error(&quot;Error fetching next available slot&quot;, ex);</span>
-        } finally {
-<span class="pc" id="L107">            dataBaseConfig.closeConnection(con);</span>
-<span class="pc" id="L108">            return ticketNum;</span>
-        }
     }
-}
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

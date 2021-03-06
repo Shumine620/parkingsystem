@@ -47,10 +47,10 @@ public class ParkingDataBaseIT {
 
     @AfterAll
     private static void tearDown(){
-        parkingSpotDAO = null;
-        ticketDAO = null;
-        dataBasePrepareService.clearDataBaseEntries();
-        dataBasePrepareService = null;
+       // parkingSpotDAO = null;
+       //ticketDAO = null;
+       // dataBasePrepareService.clearDataBaseEntries();
+       // dataBasePrepareService = null;
     }
 
     @Test  //Check that a ticket is actually saved in DB and Parking table is updated with availability
@@ -72,7 +72,7 @@ public class ParkingDataBaseIT {
 
 
     @Test  //Check that the fare generated and out time are populated correctly in the database
-    public void testParkingLotExitCar() throws IOException, ClassNotFoundException {
+    public void testParkingLotExitCar() throws Exception {
 
         //GIVEN
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);

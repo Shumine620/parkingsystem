@@ -9,7 +9,6 @@ public class Ticket {
     private double price;
     private Date inTime;
     private Date outTime;
-
     private int reccurentUser;
 
 
@@ -41,9 +40,8 @@ public class Ticket {
         return price;
     }
 
-    public double setPrice(double price) {
+    public void setPrice(double price) {
         this.price = price;
-        return price;
     }
 
     public Date getInTime() {
