@@ -13,6 +13,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 
+/**
+ * TicketDAO linking the application with the database mySQL to get the tickets.
+ * @param //ticket
+ * @throws Exception if the ticket cannot be retrieve or register
+ */
 public class TicketDAO {
 
     private static final Logger logger = LogManager.getLogger("TicketDAO");
@@ -41,7 +46,7 @@ public class TicketDAO {
         }
     }
 
-    public Ticket getTicket(String vehicleRegNumber) {
+    public Ticket getTicket(String vehicleRegNumber) throws InterruptedException{
         Connection con = null;
         Ticket ticket = null;
         try {
@@ -72,7 +77,6 @@ public class TicketDAO {
 
     public boolean updateTicket(Ticket ticket) {
         Connection con = null;
-
         try {
             con = dataBaseConfig.getConnection();
             PreparedStatement ps = con.prepareStatement(DBConstants.UPDATE_TICKET);
@@ -88,7 +92,7 @@ public class TicketDAO {
         }
         return false;
     }
-    public boolean isReccurentUser(String vehicleRegNumber, Ticket ticket) {
+    public boolean isReccurentUser(String vehicleRegNumber) {
 
         Connection con = null;
         PreparedStatement ps = null;
@@ -98,11 +102,11 @@ public class TicketDAO {
             con = dataBaseConfig.getConnection();
             ps = con.prepareStatement(DBConstants.IS_RECCURENT_USER);
             ps.setString(1, vehicleRegNumber);
-                      ps.setTimestamp(2, new Timestamp(ticket.getOutTime().getTime()));
-            ps.setInt(3, ticket.getId());
+            //ps.setTimestamp(2, new Timestamp(ticket.getOutTime().getTime()));
+           // ps.setInt(3, ticket.getId());
             rs = ps.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
                 isReccurentUser = rs.getBoolean(1);
             }
             return isReccurentUser;
@@ -115,6 +119,4 @@ public class TicketDAO {
             dataBaseConfig.closeConnection(con);
         }
    }
-
-
 }

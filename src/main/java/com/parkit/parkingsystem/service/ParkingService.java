@@ -10,7 +10,6 @@ import com.parkit.parkingsystem.util.InputReaderUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.SQLException;
 import java.util.Date;
 
 public class ParkingService {
@@ -51,11 +50,12 @@ public class ParkingService {
                 System.out.println("Please park your vehicle in spot number:" + parkingSpot.getId());
                 System.out.println("Recorded in-time for vehicle number:" + vehicleRegNumber + " is:" + inTime);
 
-                if (ticketDAO.isReccurentUser(vehicleRegNumber, ticket)) {
+                if (ticketDAO.isReccurentUser(vehicleRegNumber)) {
                     System.out.println("Welcome back! As a recurring user of our parking lot, you'll benefit from a 5% discount.");
                 }
             }
-        } catch (Exception e) {
+
+                    } catch (Exception e) {
             logger.error("Unable to process incoming vehicle", e);
         }
     }
@@ -103,7 +103,7 @@ public class ParkingService {
         }
     }
 
-    public void processExitingVehicle() throws Exception {
+    public void processExitingVehicle() throws InterruptedException {
         try {
 
             String vehicleRegNumber = getVehicleRegNumber();
@@ -111,7 +111,7 @@ public class ParkingService {
             Date outTime = new Date();
             ticket.setOutTime(outTime);
 
-            if (ticketDAO.isReccurentUser(vehicleRegNumber, ticket)) {
+            if (ticketDAO.isReccurentUser(vehicleRegNumber)) {
 
                 ticket.setPrice(ticket.getPrice() - (ticket.getPrice() * Fare.PERCENTAGE_DISCOUNT / 100));
             }
