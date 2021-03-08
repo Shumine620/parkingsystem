@@ -46,7 +46,7 @@ public class TicketDAO {
         }
     }
 
-    public Ticket getTicket(String vehicleRegNumber) throws InterruptedException {
+    public Ticket getTicket(String vehicleRegNumber) {
         Connection con = null;
         Ticket ticket = null;
         try {
@@ -96,7 +96,6 @@ public class TicketDAO {
     }
 
     public boolean isReccurentUser(String vehicleRegNumber) {
-
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -105,12 +104,15 @@ public class TicketDAO {
             con = dataBaseConfig.getConnection();
             ps = con.prepareStatement(DBConstants.IS_RECCURENT_USER);
             ps.setString(1, vehicleRegNumber);
-            //ps.setTimestamp(2, new Timestamp(ticket.getOutTime().getTime()));
-            // ps.setInt(3, ticket.getId());
             rs = ps.executeQuery();
 
             if (rs.next()) {
                 isReccurentUser = rs.getBoolean(1);
+                if (rs.getInt(1) > 0) {
+                    isReccurentUser = true;
+                } else {
+                    isReccurentUser = false;
+                }
             }
         } catch (Exception ex) {
             logger.error("Error fetching next available slot", ex);

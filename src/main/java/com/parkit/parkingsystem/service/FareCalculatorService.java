@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class FareCalculatorService {
 
 
-    public void calculateFare(Ticket ticket)  {
+    public void calculateFare(Ticket ticket) {
         if ((ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime()))) {
             throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime().toString());
         }
@@ -19,7 +19,6 @@ public class FareCalculatorService {
         float duration = (float) ((outHour - inHour) / (60 * 60 * 1000.00));// Convert duration in milliseconds then in hour
 
         if (duration > 0.5) {
-            duration = (float) (duration - 0.5);
 
             //Normal fare above 0.5hour
             switch (ticket.getParkingSpot().getParkingType()) {
@@ -35,7 +34,7 @@ public class FareCalculatorService {
                     throw new IllegalArgumentException("Unknown Parking Type");
             }
             //Discount for recurrent user
-            if (ticket.getReccurentUser() > 1) {
+            if (ticket.getReccurentUser()) {
                 ticket.setPrice(ticket.getPrice() - (ticket.getPrice() * Fare.PERCENTAGE_DISCOUNT / 100));
             }
 
