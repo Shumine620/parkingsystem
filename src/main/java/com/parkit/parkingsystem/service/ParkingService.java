@@ -36,7 +36,7 @@ public class ParkingService {
                 parkingSpot.setAvailable(false);
                 parkingSpotDAO.updateParking(parkingSpot);//allot this parking space and mark it's availability as false
 
-                Date inTime = new Date();
+               Date inTime = new Date();
                 Ticket ticket = new Ticket();
                 //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
                 //ticket.setId(ticketID);
@@ -80,6 +80,7 @@ public class ParkingService {
             logger.error("Error parsing user input for type of vehicle", ie);
         } catch (Exception e) {
             logger.error("Error fetching next available parking slot", e);
+        }finally {
         }
         return parkingSpot;
     }
@@ -103,7 +104,7 @@ public class ParkingService {
         }
     }
 
-    public void processExitingVehicle() throws InterruptedException {
+    public void processExitingVehicle() {
         try {
 
             String vehicleRegNumber = getVehicleRegNumber();
@@ -112,7 +113,6 @@ public class ParkingService {
             ticket.setOutTime(outTime);
 
             if (ticketDAO.isReccurentUser(vehicleRegNumber)) {
-
                 ticket.setPrice(ticket.getPrice() - (ticket.getPrice() * Fare.PERCENTAGE_DISCOUNT / 100));
             }
                 fareCalculatorService.calculateFare(ticket);
@@ -125,7 +125,7 @@ public class ParkingService {
                 } else {
                     System.out.println("Unable to update ticket information. Error occurred");
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
                 logger.error("Unable to process exiting vehicle", e);
             }
         }

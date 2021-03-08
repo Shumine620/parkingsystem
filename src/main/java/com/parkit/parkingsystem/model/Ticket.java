@@ -63,7 +63,8 @@ public class Ticket {
     public int getReccurentUser() {
                return reccurentUser;
     }
-     public void setReccurentUser(int reccurentUser) {
+
+    public void setReccurentUser(int reccurentUser) {
         this.reccurentUser = reccurentUser;
      }
 }

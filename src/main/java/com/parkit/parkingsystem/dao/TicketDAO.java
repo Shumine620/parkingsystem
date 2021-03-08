@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 
 /**
  * TicketDAO linking the application with the database mySQL to get the tickets.
+ *
  * @param //ticket
  * @throws Exception if the ticket cannot be retrieve or register
  */
@@ -23,7 +24,6 @@ public class TicketDAO {
     private static final Logger logger = LogManager.getLogger("TicketDAO");
 
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
-
 
     public boolean saveTicket(Ticket ticket) {
         Connection con = null;
@@ -46,7 +46,7 @@ public class TicketDAO {
         }
     }
 
-    public Ticket getTicket(String vehicleRegNumber) throws InterruptedException{
+    public Ticket getTicket(String vehicleRegNumber) throws InterruptedException {
         Connection con = null;
         Ticket ticket = null;
         try {
@@ -84,14 +84,17 @@ public class TicketDAO {
             ps.setTimestamp(2, new Timestamp(ticket.getOutTime().getTime()));
             ps.setInt(3, ticket.getId());
             ps.execute();
+            ps.close();
             return true;
         } catch (Exception ex) {
             logger.error("Error saving ticket info", ex);
+
         } finally {
             dataBaseConfig.closeConnection(con);
         }
         return false;
     }
+
     public boolean isReccurentUser(String vehicleRegNumber) {
 
         Connection con = null;
@@ -103,13 +106,12 @@ public class TicketDAO {
             ps = con.prepareStatement(DBConstants.IS_RECCURENT_USER);
             ps.setString(1, vehicleRegNumber);
             //ps.setTimestamp(2, new Timestamp(ticket.getOutTime().getTime()));
-           // ps.setInt(3, ticket.getId());
+            // ps.setInt(3, ticket.getId());
             rs = ps.executeQuery();
 
-            while (rs.next()) {
+            if (rs.next()) {
                 isReccurentUser = rs.getBoolean(1);
             }
-            return isReccurentUser;
         } catch (Exception ex) {
             logger.error("Error fetching next available slot", ex);
             return false;
@@ -117,6 +119,7 @@ public class TicketDAO {
             dataBaseConfig.closeResultSet(rs);
             dataBaseConfig.closePreparedStatement(ps);
             dataBaseConfig.closeConnection(con);
+            return isReccurentUser;
         }
-   }
+    }
 }
