@@ -3,13 +3,11 @@ package com.parkit.parkingsystem.service;
 import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.model.Ticket;
 
-import java.sql.SQLException;
-
 
 public class FareCalculatorService {
 
 
-    public void calculateFare(Ticket ticket) {
+    public void calculateFare( Ticket ticket) {
         if ((ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime()))) {
             throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime().toString());
         }
@@ -37,10 +35,9 @@ public class FareCalculatorService {
             if (ticket.getReccurentUser()) {
                 ticket.setPrice(ticket.getPrice() - (ticket.getPrice() * Fare.PERCENTAGE_DISCOUNT / 100));
             }
-
-            //Free parking under 0.5hour
         } else {
             ticket.setPrice(0.0);
+
         }
 
     }

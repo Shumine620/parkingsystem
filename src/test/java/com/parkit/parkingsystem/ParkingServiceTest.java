@@ -19,6 +19,7 @@ import java.util.Date;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
+
 public class ParkingServiceTest {
 
     private static ParkingService parkingService;
@@ -30,7 +31,7 @@ public class ParkingServiceTest {
     @Mock
     private static TicketDAO ticketDAO;
 
-    @BeforeEach
+   @BeforeEach
     private void setUpPerTest() {
         try {
             when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
@@ -53,7 +54,7 @@ public class ParkingServiceTest {
     }
 
     @Test
-    public void processExitingVehicleTest() throws Exception {
+    public void processExitingVehicleTest() {
         parkingService.processExitingVehicle();
         verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));
     }
