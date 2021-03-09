@@ -3,9 +3,7 @@ package com.parkit.parkingsystem.service;
 import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.model.Ticket;
 
-
 public class FareCalculatorService {
-
 
     public void calculateFare( Ticket ticket) {
         if ((ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime()))) {
@@ -37,7 +35,6 @@ public class FareCalculatorService {
             }
         } else {
             ticket.setPrice(0.0);
-
         }
 
     }

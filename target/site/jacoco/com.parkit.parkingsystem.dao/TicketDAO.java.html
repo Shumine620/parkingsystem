@@ -19,30 +19,30 @@ import java.sql.Timestamp;
  * @param //ticket
  * @throws Exception if the ticket cannot be retrieve or register
  */
-<span class="nc" id="L22">public class TicketDAO {</span>
+<span class="fc" id="L22">public class TicketDAO {</span>
 
 <span class="fc" id="L24">    private static final Logger logger = LogManager.getLogger(&quot;TicketDAO&quot;);</span>
 
-<span class="nc" id="L26">    public DataBaseConfig dataBaseConfig = new DataBaseConfig();</span>
+<span class="fc" id="L26">    public DataBaseConfig dataBaseConfig = new DataBaseConfig();</span>
 
     public boolean saveTicket(Ticket ticket) {
-<span class="nc" id="L29">        Connection con = null;</span>
+<span class="fc" id="L29">        Connection con = null;</span>
         try {
-<span class="nc" id="L31">            con = dataBaseConfig.getConnection();</span>
-<span class="nc" id="L32">            PreparedStatement ps = con.prepareStatement(DBConstants.SAVE_TICKET);</span>
+<span class="fc" id="L31">            con = dataBaseConfig.getConnection();</span>
+<span class="fc" id="L32">            PreparedStatement ps = con.prepareStatement(DBConstants.SAVE_TICKET);</span>
             //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
             //ps.setInt(1,ticket.getId());
-<span class="nc" id="L35">            ps.setInt(1, ticket.getParkingSpot().getId());</span>
-<span class="nc" id="L36">            ps.setString(2, ticket.getVehicleRegNumber());</span>
-<span class="nc" id="L37">            ps.setDouble(3, ticket.getPrice());</span>
-<span class="nc" id="L38">            ps.setTimestamp(4, new Timestamp(ticket.getInTime().getTime()));</span>
-<span class="nc bnc" id="L39" title="All 2 branches missed.">            ps.setTimestamp(5, (ticket.getOutTime() == null) ? null : (new Timestamp(ticket.getOutTime().getTime())));</span>
-<span class="nc" id="L40">            return ps.execute();</span>
-<span class="nc" id="L41">        } catch (Exception ex) {</span>
-<span class="nc" id="L42">            logger.error(&quot;Error fetching next available slot&quot;, ex);</span>
+<span class="fc" id="L35">            ps.setInt(1, ticket.getParkingSpot().getId());</span>
+<span class="fc" id="L36">            ps.setString(2, ticket.getVehicleRegNumber());</span>
+<span class="fc" id="L37">            ps.setDouble(3, ticket.getPrice());</span>
+<span class="fc" id="L38">            ps.setTimestamp(4, new Timestamp(ticket.getInTime().getTime()));</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">            ps.setTimestamp(5, (ticket.getOutTime() == null) ? null : (new Timestamp(ticket.getOutTime().getTime())));</span>
+<span class="fc" id="L40">            return ps.execute();</span>
+<span class="fc" id="L41">        } catch (Exception ex) {</span>
+<span class="fc" id="L42">            logger.error(&quot;Error fetching next available slot&quot;, ex);</span>
         } finally {
-<span class="nc" id="L44">            dataBaseConfig.closeConnection(con);</span>
-<span class="nc" id="L45">            return false;</span>
+<span class="pc" id="L44">            dataBaseConfig.closeConnection(con);</span>
+<span class="pc" id="L45">            return false;</span>
         }
     }
 
@@ -96,20 +96,20 @@ import java.sql.Timestamp;
     }
 
     public boolean isReccurentUser(String vehicleRegNumber) {
-<span class="nc" id="L99">        Connection con = null;</span>
-<span class="nc" id="L100">        PreparedStatement ps = null;</span>
-<span class="nc" id="L101">        ResultSet rs = null;</span>
-<span class="nc" id="L102">        boolean isReccurentUser = false;</span>
+<span class="fc" id="L99">        Connection con = null;</span>
+<span class="fc" id="L100">        PreparedStatement ps = null;</span>
+<span class="fc" id="L101">        ResultSet rs = null;</span>
+<span class="fc" id="L102">        boolean isReccurentUser = false;</span>
         try {
-<span class="nc" id="L104">            con = dataBaseConfig.getConnection();</span>
-<span class="nc" id="L105">            ps = con.prepareStatement(DBConstants.IS_RECCURENT_USER);</span>
-<span class="nc" id="L106">            ps.setString(1, vehicleRegNumber);</span>
-<span class="nc" id="L107">            rs = ps.executeQuery();</span>
+<span class="fc" id="L104">            con = dataBaseConfig.getConnection();</span>
+<span class="fc" id="L105">            ps = con.prepareStatement(DBConstants.IS_RECCURENT_USER);</span>
+<span class="fc" id="L106">            ps.setString(1, vehicleRegNumber);</span>
+<span class="fc" id="L107">            rs = ps.executeQuery();</span>
 
-<span class="nc bnc" id="L109" title="All 2 branches missed.">            if (rs.next()) {</span>
-<span class="nc" id="L110">                isReccurentUser = rs.getBoolean(1);</span>
-<span class="nc bnc" id="L111" title="All 2 branches missed.">                if (rs.getInt(1) &gt; 0) {</span>
-<span class="nc" id="L112">                    isReccurentUser = true;</span>
+<span class="pc bpc" id="L109" title="1 of 2 branches missed.">            if (rs.next()) {</span>
+<span class="fc" id="L110">                isReccurentUser = rs.getBoolean(1);</span>
+<span class="pc bpc" id="L111" title="1 of 2 branches missed.">                if (rs.getInt(1) &gt; 0) {</span>
+<span class="fc" id="L112">                    isReccurentUser = true;</span>
                 } else {
 <span class="nc" id="L114">                    isReccurentUser = false;</span>
                 }
@@ -118,10 +118,10 @@ import java.sql.Timestamp;
 <span class="nc" id="L118">            logger.error(&quot;Error fetching next available slot&quot;, ex);</span>
 <span class="nc" id="L119">            return false;</span>
         } finally {
-<span class="nc" id="L121">            dataBaseConfig.closeResultSet(rs);</span>
-<span class="nc" id="L122">            dataBaseConfig.closePreparedStatement(ps);</span>
-<span class="nc" id="L123">            dataBaseConfig.closeConnection(con);</span>
-<span class="nc" id="L124">            return isReccurentUser;</span>
+<span class="pc" id="L121">            dataBaseConfig.closeResultSet(rs);</span>
+<span class="pc" id="L122">            dataBaseConfig.closePreparedStatement(ps);</span>
+<span class="pc" id="L123">            dataBaseConfig.closeConnection(con);</span>
+<span class="pc" id="L124">            return isReccurentUser;</span>
         }
     }
 }
