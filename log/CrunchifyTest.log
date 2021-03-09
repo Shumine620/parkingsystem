@@ -3787,3 +3787,350 @@ java.lang.IllegalArgumentException: Entered input is invalid
 2021-03-09 16:16:18 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
 2021-03-09 16:16:18 [main] INFO  DataBaseTestConfig:14 - Create DB connection
 2021-03-09 16:16:18 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:19:09 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:19:10 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:19:11 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:50:28 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:50:28 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:50:28 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:50:29 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:59:08 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:59:09 [main] WARN  SeleniumExtension:450 - Driver handler for context id [engine:junit-jupiter]/[class:com.parkit.parkingsystem.integration.ParkingDataBaseIT]/[method:testParkingLotExitCar(com.parkit.parkingsystem.model.Ticket)] not found
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 16:59:09 [main] WARN  SeleniumExtension:450 - Driver handler for context id [engine:junit-jupiter]/[class:com.parkit.parkingsystem.integration.ParkingDataBaseIT]/[method:testParkingACar()] not found
+2021-03-09 16:59:09 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 16:59:10 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:07:21 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:07:22 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:50:38 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:50:39 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:50:39 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 17:50:40 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:01:41 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:01:42 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:01:43 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:03:00 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:03:04 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:03:15 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:03:16 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:04:02 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:07 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:08 [main] ERROR TicketDAO:42 - Error fetching next available slot
+java.lang.NullPointerException: Cannot invoke "com.parkit.parkingsystem.model.Ticket.getParkingSpot()" because "ticket" is null
+	at com.parkit.parkingsystem.dao.TicketDAO.saveTicket(TicketDAO.java:35) ~[classes/:?]
+	at com.parkit.parkingsystem.integration.ParkingDataBaseIT.testParkingLotExitCar(ParkingDataBaseIT.java:89) ~[test-classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:564) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:628) ~[junit-platform-commons-1.4.0.jar:1.4.0]
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:117) ~[junit-jupiter-engine-5.4.0.jar:5.4.0]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:184) ~[junit-jupiter-engine-5.4.0.jar:5.4.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:180) ~[junit-jupiter-engine-5.4.0.jar:5.4.0]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:127) ~[junit-jupiter-engine-5.4.0.jar:5.4.0]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:68) ~[junit-jupiter-engine-5.4.0.jar:5.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51) ~[junit-platform-engine-1.4.0.jar:1.4.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:229) ~[junit-platform-launcher-1.4.0.jar:1.4.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:197) ~[junit-platform-launcher-1.4.0.jar:1.4.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:211) [junit-platform-launcher-1.4.0.jar:1.4.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:191) [junit-platform-launcher-1.4.0.jar:1.4.0]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:128) [junit-platform-launcher-1.4.0.jar:1.4.0]
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71) [junit5-rt.jar:?]
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220) [junit-rt.jar:?]
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53) [junit-rt.jar:?]
+2021-03-09 18:08:08 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:12 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:46 - Closing Result Set
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:35 - Closing Prepared Statement
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:24 - Closing DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:14 - Create DB connection
+2021-03-09 18:08:13 [main] INFO  DataBaseTestConfig:24 - Closing DB connection

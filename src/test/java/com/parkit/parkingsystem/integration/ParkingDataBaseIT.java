@@ -80,7 +80,7 @@ public class ParkingDataBaseIT {
 
 
     @Test  //Check that the fare generated and out time are populated correctly in the database
-    public void testParkingLotExitCar(Ticket ticket) throws Exception {
+    public void testParkingLotExitCar() throws Exception {
 
         //GIVEN
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -94,13 +94,12 @@ public class ParkingDataBaseIT {
         ticket = ticketDAO.getTicket("ABCDEF");
 
         //THEN
-       fareCalculatorService.calculateFare(ticket);
-       assertNotNull(ticketDAO.getTicket(ticket.getVehicleRegNumber()));
+        fareCalculatorService.calculateFare(ticket);
+        assertNotNull(ticketDAO.getTicket(ticket.getVehicleRegNumber()));
         assertEquals(1,ticket.getParkingSpot().getId());//Check ticket related to the parking spot
-       assertEquals(1, parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR));
+        assertEquals(1, parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR));
         assertNotNull(ticket.getOutTime());
         assertEquals(0, ticket.getPrice());
     }
-
 
 }
