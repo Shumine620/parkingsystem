@@ -43,6 +43,7 @@ class ParkingSpotDAOTest {
 
     @AfterEach
     void tearDown() {
+        dataBasePrepareService.clearDataBaseEntries();
     }
 
     @Test
@@ -72,6 +73,6 @@ class ParkingSpotDAOTest {
 
         //THEN
         assertTrue(parkingSpotDAO.updateParking(parkingSpot));
-        assertEquals(3, parkingSpotDAO.getNextAvailableSlot(CAR));
+
     }
 }
