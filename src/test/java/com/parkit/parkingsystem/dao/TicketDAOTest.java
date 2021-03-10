@@ -5,7 +5,6 @@ import com.parkit.parkingsystem.integration.config.DataBaseTestConfig;
 import com.parkit.parkingsystem.integration.service.DataBasePrepareService;
 import com.parkit.parkingsystem.model.ParkingSpot;
 import com.parkit.parkingsystem.model.Ticket;
-import com.parkit.parkingsystem.service.FareCalculatorService;
 import com.parkit.parkingsystem.service.ParkingService;
 import com.parkit.parkingsystem.util.InputReaderUtil;
 import org.junit.jupiter.api.AfterAll;
@@ -13,9 +12,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.engine.execution.ExecutableInvoker;
+import org.junit.platform.commons.logging.Logger;
+import org.junit.platform.commons.logging.LoggerFactory;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.io.IOException;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -33,20 +36,20 @@ class TicketDAOTest {
     private static Ticket ticket;
     private static ParkingSpot parkingSpot;
     private static ParkingType parkingType;
-
-
+    private static final Logger logger = LoggerFactory.getLogger(ExecutableInvoker.class);
     @Mock
     private static InputReaderUtil inputReaderUtil;
 
     @BeforeAll
     private static void setUp() {
+        ticketDAO = new TicketDAO();
         parkingSpotDAO = new ParkingSpotDAO();
         parkingSpotDAO.dataBaseConfig = dataBaseTestConfig;
-        ticketDAO = new TicketDAO();
         ticketDAO.dataBaseConfig = dataBaseTestConfig;
         dataBasePrepareService = new DataBasePrepareService();
-        FareCalculatorService fareCalculatorService = new FareCalculatorService();
+
     }
+
 
     /**
      * @throws Exception
@@ -59,12 +62,58 @@ class TicketDAOTest {
     }
 
     @AfterAll
-    private static void tearDown(){
+    private static void tearDown() {
         dataBasePrepareService.clearDataBaseEntries();
 
     }
+
     @Test
-    void saveTicket() {
+    public void saveTicket() throws IOException {
+        //GIVEN
+        Ticket ticket = new Ticket();
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+        ticket.setParkingSpot(parkingSpot);
+        parkingType = ParkingType.BIKE;
+        parkingSpotDAO.getNextAvailableSlot(parkingType);
+
+        //WHEN
+        parkingService.processIncomingVehicle();
+        ticket.setVehicleRegNumber("ABCDEF");
+        ticket.setPrice(1.0);
+        ticket.setInTime(new Date());
+        ticket.setOutTime(new Date());
+        ticketDAO.saveTicket(ticket);
+        //THEN
+        assertNotNull(parkingSpotDAO);
+        assertTrue(ticketDAO.saveTicket(ticket));
+
+    }
+
+    @Test
+    public void getTicket() throws IOException {
+        //GIVEN
+        Ticket ticket = new Ticket();
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+        ticket.setParkingSpot(parkingSpot);
+        parkingType = ParkingType.BIKE;
+        parkingSpotDAO.getNextAvailableSlot(parkingType);
+
+        //WHEN
+        parkingService.processIncomingVehicle();
+        ticket.setVehicleRegNumber("MPLKN");
+
+        ticket.setPrice(1.0);
+        ticket.setOutTime(new Date());
+        ticketDAO.getTicket("MPLKN");
+        //THEN
+        assertNotNull(parkingSpotDAO);
+        assertNotNull(ticketDAO.getTicket("MPLKN"));
+        return;
+    }
+
+
+    @Test
+    public void updateTicket() throws IOException {
         //GIVEN
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -76,31 +125,12 @@ class TicketDAOTest {
         parkingService.processIncomingVehicle();
         ticket.setVehicleRegNumber("ABCDEF");
 
-       //FareCalculatorService fareCalculatorService = new FareCalculatorService();
         ticket.setPrice(1.0);
         ticket.setOutTime(new Date());
         //THEN
         assertNotNull(parkingSpotDAO);
-        assertTrue(ticketDAO.saveTicket(ticket));
+        assertTrue(ticketDAO.updateTicket(ticket));
 
     }
-
-    @Test
-    void getTicket() {
-        //GIVEN
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
-        //WHEN
-        //THEN
-    }
-
-    @Test
-
-    void updateTicket() {
-        //GIVEN
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
-        //WHEN
-        //THEN
-    }
-
 
 }

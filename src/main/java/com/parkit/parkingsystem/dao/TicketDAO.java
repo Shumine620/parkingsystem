@@ -48,7 +48,7 @@ public class TicketDAO {
 
     public Ticket getTicket(String vehicleRegNumber) {
         Connection con = null;
-        Ticket ticket = null;
+        Ticket ticket = new Ticket();
         try {
             con = dataBaseConfig.getConnection();
             PreparedStatement ps = con.prepareStatement(DBConstants.GET_TICKET);

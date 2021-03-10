@@ -16,6 +16,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.lenient;
 
@@ -62,7 +64,7 @@ public class ParkingDataBaseIT {
     }
 
     @Test  //Check that a ticket is actually saved in DB and Parking table is updated with availability
-    public void testParkingACar() {
+    public void testParkingACar() throws IOException {
         //GIVEN
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingType = ParkingType.CAR;
