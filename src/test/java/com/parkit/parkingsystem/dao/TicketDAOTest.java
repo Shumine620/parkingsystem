@@ -12,9 +12,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.engine.execution.ExecutableInvoker;
-import org.junit.platform.commons.logging.Logger;
-import org.junit.platform.commons.logging.LoggerFactory;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -36,7 +33,7 @@ class TicketDAOTest {
     private static Ticket ticket;
     private static ParkingSpot parkingSpot;
     private static ParkingType parkingType;
-    private static final Logger logger = LoggerFactory.getLogger(ExecutableInvoker.class);
+
     @Mock
     private static InputReaderUtil inputReaderUtil;
 
@@ -68,7 +65,7 @@ class TicketDAOTest {
     }
 
     @Test
-    public void saveTicket() throws IOException {
+    public void testSaveTicket() throws IOException {
         //GIVEN
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -90,7 +87,7 @@ class TicketDAOTest {
     }
 
     @Test
-    public void getTicket() throws IOException {
+    public void testGetTicket() throws IOException {
         //GIVEN
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -101,8 +98,8 @@ class TicketDAOTest {
         //WHEN
         parkingService.processIncomingVehicle();
         ticket.setVehicleRegNumber("MPLKN");
-
         ticket.setPrice(1.0);
+        ticket.setInTime(new Date());
         ticket.setOutTime(new Date());
         ticketDAO.getTicket("MPLKN");
         //THEN
@@ -113,7 +110,7 @@ class TicketDAOTest {
 
 
     @Test
-    public void updateTicket() throws IOException {
+    public void testUpdateTicket() throws IOException {
         //GIVEN
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -126,11 +123,32 @@ class TicketDAOTest {
         ticket.setVehicleRegNumber("ABCDEF");
 
         ticket.setPrice(1.0);
+        ticket.setInTime(new Date());
         ticket.setOutTime(new Date());
         //THEN
         assertNotNull(parkingSpotDAO);
         assertTrue(ticketDAO.updateTicket(ticket));
 
     }
+    @Test
+    public void testIsReccurentUser() throws IOException {
+        //GIVEN
+        Ticket ticket = new Ticket();
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+        ticket.setParkingSpot(parkingSpot);
+        parkingType = ParkingType.BIKE;
+        parkingSpotDAO.getNextAvailableSlot(parkingType);
 
+        //WHEN
+        parkingService.processIncomingVehicle();
+        parkingService.processExitingVehicle();
+        ticket.setVehicleRegNumber("ABCDEF");
+        ticket.setPrice(2.0);
+        ticket.setInTime(new Date());
+        ticket.setOutTime(new Date());
+        //THEN
+        assertNotNull(parkingSpotDAO);
+        assertTrue(ticketDAO.isReccurentUser(ticket.getVehicleRegNumber()));
+        assertTrue(ticketDAO.isReccurentUser("ABCDEF"));
+    }
 }
