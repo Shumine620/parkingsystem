@@ -12,8 +12,6 @@ import java.io.IOException;
 import static com.parkit.parkingsystem.constants.ParkingType.CAR;
 import static org.junit.jupiter.api.Assertions.*;
 
-
-
 class ParkingSpotDAOTest {
     private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
     private static DataBasePrepareService dataBasePrepareService;
@@ -44,7 +42,6 @@ class ParkingSpotDAOTest {
         assertFalse(parkingSpot.isAvailable());
         assertEquals(2, parkingSpotDAO.getNextAvailableSlot(CAR));
 
-
     }
 
     @Test
@@ -58,6 +55,5 @@ class ParkingSpotDAOTest {
 
         //THEN
         assertTrue(parkingSpotDAO.updateParking(parkingSpot));
-
     }
 }

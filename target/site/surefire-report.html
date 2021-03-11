@@ -84,12 +84,12 @@ function toggleDisplay(elementId) {
 <th>Success Rate</th>
 <th>Time</th></tr>
 <tr class="b">
-<td>18</td>
+<td>20</td>
 <td>0</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>100%</td>
-<td>41.616</td></tr></table><br />
+<td>95%</td>
+<td>39.21</td></tr></table><br />
 <p>Note: failures are anticipated and checked for with assertions while errors are unanticipated.</p><br /></section><section>
 <h2><a name="Package_List"></a>Package List</h2><a name="Package_List"></a>
 <p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><br />
@@ -104,12 +104,12 @@ function toggleDisplay(elementId) {
 <th>Time</th></tr>
 <tr class="b">
 <td><a href="#com.parkit.parkingsystem.dao">com.parkit.parkingsystem.dao</a></td>
-<td>4</td>
+<td>6</td>
 <td>0</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>100%</td>
-<td>41.616</td></tr>
+<td>83.333%</td>
+<td>39.21</td></tr>
 <tr class="a">
 <td><a href="#com.parkit.parkingsystem">com.parkit.parkingsystem</a></td>
 <td>13</td>
@@ -139,6 +139,15 @@ function toggleDisplay(elementId) {
 <th>Success Rate</th>
 <th>Time</th></tr>
 <tr class="b">
+<td><a href="#com.parkit.parkingsystem.dao.ParkingSpotDAOTest"><figure><img src="images/icon_warning_sml.gif" alt="" /></figure></a></td>
+<td><a href="#com.parkit.parkingsystem.dao.ParkingSpotDAOTest">ParkingSpotDAOTest</a></td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>50%</td>
+<td>37.616</td></tr>
+<tr class="a">
 <td><a href="#com.parkit.parkingsystem.dao.TicketDAOTest"><figure><img src="images/icon_success_sml.gif" alt="" /></figure></a></td>
 <td><a href="#com.parkit.parkingsystem.dao.TicketDAOTest">TicketDAOTest</a></td>
 <td>4</td>
@@ -146,7 +155,7 @@ function toggleDisplay(elementId) {
 <td>0</td>
 <td>0</td>
 <td>100%</td>
-<td>41.616</td></tr></table></section><section>
+<td>1.594</td></tr></table></section><section>
 <h3><a name="com.parkit.parkingsystem"></a>com.parkit.parkingsystem</h3><a name="com.parkit.parkingsystem"></a>
 <table border="1" class="bodyTable">
 <tr class="a">
@@ -198,16 +207,40 @@ function toggleDisplay(elementId) {
 <td>0</td></tr></table></section><br /></section><section>
 <h2><a name="Test_Cases"></a>Test Cases</h2><a name="Test_Cases"></a>
 <p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><section>
+<h3><a name="ParkingSpotDAOTest"></a>ParkingSpotDAOTest</h3><a name="com.parkit.parkingsystem.dao.ParkingSpotDAOTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><a href="#com.parkit.parkingsystem.dao.ParkingSpotDAOTest.getNextAvailableSlot"><figure><img src="images/icon_error_sml.gif" alt="" /></figure></a></td>
+<td><a name="TC_com.parkit.parkingsystem.dao.ParkingSpotDAOTest.getNextAvailableSlot"></a><a href="#com.parkit.parkingsystem.dao.ParkingSpotDAOTest.getNextAvailableSlot">getNextAvailableSlot</a>
+<div class="detailToggle" style="display:inline"><a href="javascript:toggleDisplay('com.parkit.parkingsystem.dao.ParkingSpotDAOTest.getNextAvailableSlot');"><span style="display:inline;" id="com.parkit.parkingsystem.dao.ParkingSpotDAOTest.getNextAvailableSlot-off"> + </span><span style="display:none;" id="com.parkit.parkingsystem.dao.ParkingSpotDAOTest.getNextAvailableSlot-on"> - </span>[ Detail ]</a></div></td>
+<td>37.601</td></tr>
+<tr class="b">
+<td></td>
+<td>expected: &lt;2&gt; but was: &lt;1&gt;</td>
+<td></td></tr>
+<tr class="a">
+<td></td>
+<td>
+<div id="com.parkit.parkingsystem.dao.ParkingSpotDAOTest.getNextAvailableSlot-failure" style="display:none;">
+<div>
+<pre>org.opentest4j.AssertionFailedError: expected: &lt;2&gt; but was: &lt;1&gt;
+	at com.parkit.parkingsystem.dao.ParkingSpotDAOTest.getNextAvailableSlot(ParkingSpotDAOTest.java:45)
+</pre></div></div></td>
+<td></td></tr>
+<tr class="b">
+<td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
+<td><a name="TC_com.parkit.parkingsystem.dao.ParkingSpotDAOTest.updateParking"></a>updateParking</td>
+<td>0.015</td></tr></table></section><section>
 <h3><a name="TicketDAOTest"></a>TicketDAOTest</h3><a name="com.parkit.parkingsystem.dao.TicketDAOTest"></a>
 <table border="1" class="bodyTable">
 <tr class="a">
 <td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
 <td><a name="TC_com.parkit.parkingsystem.dao.TicketDAOTest.testUpdateTicket"></a>testUpdateTicket</td>
-<td>40.069</td></tr>
+<td>0.641</td></tr>
 <tr class="b">
 <td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
 <td><a name="TC_com.parkit.parkingsystem.dao.TicketDAOTest.testSaveTicket"></a>testSaveTicket</td>
-<td>0.61</td></tr>
+<td>0.547</td></tr>
 <tr class="a">
 <td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
 <td><a name="TC_com.parkit.parkingsystem.dao.TicketDAOTest.testGetTicket"></a>testGetTicket</td>
@@ -215,7 +248,7 @@ function toggleDisplay(elementId) {
 <tr class="b">
 <td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
 <td><a name="TC_com.parkit.parkingsystem.dao.TicketDAOTest.testIsReccurentUser"></a>testIsReccurentUser</td>
-<td>0.125</td></tr></table></section><section>
+<td>0.312</td></tr></table></section><section>
 <h3><a name="FareCalculatorServiceTest"></a>FareCalculatorServiceTest</h3><a name="com.parkit.parkingsystem.FareCalculatorServiceTest"></a>
 <table border="1" class="bodyTable">
 <tr class="a">
@@ -276,8 +309,21 @@ function toggleDisplay(elementId) {
 <table border="1" class="bodyTable">
 <tr class="a">
 <td><figure><img src="images/icon_success_sml.gif" alt="" /></figure></td>
-<td><a name="TC_com.parkit.parkingsystem.service.InteractiveShellTest.loadInterface"></a>loadInterface</td>
-<td>0</td></tr></table></section><br /></section>
+<td><a name="TC_com.parkit.parkingsystem.service.InteractiveShellTest.loadInterfaceTest"></a>loadInterfaceTest</td>
+<td>0</td></tr></table></section><br /></section><section>
+<h2><a name="Failure_Details"></a>Failure Details</h2><a name="Failure_Details"></a>
+<p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><br />
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><figure><img src="images/icon_error_sml.gif" alt="" /></figure></td>
+<td><a name="com.parkit.parkingsystem.dao.ParkingSpotDAOTest.getNextAvailableSlot"></a>getNextAvailableSlot</td></tr>
+<tr class="b">
+<td></td>
+<td>org.opentest4j.AssertionFailedError: expected: &lt;2&gt; but was: &lt;1&gt;</td></tr>
+<tr class="a">
+<td></td>
+<td>
+<div id="getNextAvailableSlot-failure">com.parkit.parkingsystem.dao.ParkingSpotDAOTest:45</div></td></tr></table><br /></section>
       </div>
     </div>
     <div class="clear">

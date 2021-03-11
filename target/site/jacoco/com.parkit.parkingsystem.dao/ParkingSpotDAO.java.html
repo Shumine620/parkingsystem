@@ -56,9 +56,9 @@ import java.sql.SQLException;
 <span class="fc" id="L56">            int updateRowCount = ps.executeUpdate();</span>
 <span class="fc" id="L57">            dataBaseConfig.closePreparedStatement(ps);</span>
 <span class="pc bpc" id="L58" title="1 of 2 branches missed.">            return (updateRowCount == 1);</span>
-<span class="nc" id="L59">        } catch (Exception ex) {</span>
-<span class="nc" id="L60">            logger.error(&quot;Error updating parking info&quot;, ex);</span>
-<span class="nc" id="L61">            return false;</span>
+<span class="fc" id="L59">        } catch (Exception ex) {</span>
+<span class="fc" id="L60">            logger.error(&quot;Error updating parking info&quot;, ex);</span>
+<span class="fc" id="L61">            return false;</span>
         } finally {
 <span class="fc" id="L63">            dataBaseConfig.closeConnection(con);</span>
         }

@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
 
 public class ParkingServiceTest {
 
-    private static ParkingService parkingService;
+    public static ParkingService parkingService;
 
     @Mock
     private static InputReaderUtil inputReaderUtil;

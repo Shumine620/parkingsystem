@@ -36,7 +36,7 @@ public class ParkingDataBaseIT {
     private static ParkingType parkingType;
 
     @Mock
-    private static InputReaderUtil inputReaderUtil;
+    public static InputReaderUtil inputReaderUtil;
 
     @BeforeAll
     private static void setUp() {

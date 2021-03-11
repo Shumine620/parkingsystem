@@ -60,11 +60,9 @@ public class Ticket {
         this.outTime = outTime;
     }
 
-    public boolean getReccurentUser() {
-               return reccurentUser;
-    }
-
+    public boolean getReccurentUser() {return reccurentUser; }
     public void setReccurentUser(boolean reccurentUser) {
         this.reccurentUser = reccurentUser;
      }
+
 }
