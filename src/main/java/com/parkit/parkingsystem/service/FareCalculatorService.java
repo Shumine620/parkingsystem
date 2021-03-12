@@ -3,16 +3,25 @@ package com.parkit.parkingsystem.service;
 import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.model.Ticket;
 
+/**
+ * FareCalculatorService allowed to calculate the fares to be applied to each parking user.
+ * Upon time, under 30 minutes it is free. Reccurent users have 5% discount.
+ */
 public class FareCalculatorService {
 
-    public void calculateFare( Ticket ticket) {
+    /**
+     * @param ticket to be issue to the client
+     * @throws IllegalArgumentException if ticket cannot be issue
+     * @see Ticket
+     */
+    public void calculateFare(Ticket ticket) {
         if ((ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime()))) {
             throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime());//remove .toString() to avoid nullpointer exception
         }
         long inHour = ticket.getInTime().getTime();
         long outHour = ticket.getOutTime().getTime();
 
-        float duration = (float) ((outHour - inHour) / (60 * 60 * 1000.00));// Convert duration in milliseconds then in hour
+        float duration = (float) ((outHour - inHour) / (60 * 60 * 1000.00)); // Convert duration in milliseconds then in hour
 
         if (duration > 0.5) {
 
@@ -36,7 +45,6 @@ public class FareCalculatorService {
         } else {
             ticket.setPrice(0.0);
         }
-
     }
 }
 

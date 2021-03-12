@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 class InputReaderUtilTest {
-private static InputReaderUtil inputReaderUtil;
+    private static InputReaderUtil inputReaderUtil;
 
 
     @BeforeAll
@@ -20,19 +20,25 @@ private static InputReaderUtil inputReaderUtil;
         inputReaderUtil = new InputReaderUtil();
     }
 
+    /**
+     * @throws IOException
+     */
     @Test
     public void readSelection() throws IOException {
 
         String input = "222";
-       Scanner scanner = new Scanner(input);
+        Scanner scanner = new Scanner(input);
 
         assertEquals(input, inputReaderUtil.readSelection());
 
     }
 
+    /**
+     *
+     */
     @Test
     void readVehicleRegistrationNumber() {
-       final String vehicleRegNumber = "KLMOP";
+        final String vehicleRegNumber = "KLMOP";
 
     }
 }

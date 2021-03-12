@@ -19,7 +19,7 @@ import java.util.Date;
 
 import static com.parkit.parkingsystem.constants.ParkingType.CAR;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
 /**
@@ -40,7 +40,6 @@ public class ParkingServiceTest {
     @Mock
     private static TicketDAO ticketDAO;
 
-
     @BeforeEach
     void setUpPerTest() throws Exception {
         try {
@@ -51,7 +50,7 @@ public class ParkingServiceTest {
             ticket.setInTime(new Date(System.currentTimeMillis() - (60 * 60 * 1000)));
             ticket.setParkingSpot(parkingSpot);
             ticket.setVehicleRegNumber("ABCDEF");
-                        lenient().when(ticketDAO.getTicket(anyString())).thenReturn(ticket);
+            lenient().when(ticketDAO.getTicket(anyString())).thenReturn(ticket);
             lenient().when(ticketDAO.updateTicket(any(Ticket.class))).thenReturn(true);
             lenient().when(parkingSpotDAO.updateParking(any(ParkingSpot.class))).thenReturn(true);
 
@@ -83,7 +82,7 @@ public class ParkingServiceTest {
     }
 
     @Test
-    public void processExitingVehicleTest() {
+    public void processExitingVehicleTest() throws Exception {
         parkingService.processExitingVehicle();
         verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));
     }
@@ -100,6 +99,9 @@ public class ParkingServiceTest {
         parkingSpotDAO.getNextAvailableSlot(CAR);
         parkingService.processIncomingVehicle();
         //THEN
-        assertEquals(null, parkingService.getNextParkingNumberIfAvailable());
+        assertNull(parkingService.getNextParkingNumberIfAvailable());
+        assertThat(parkingService.getNextParkingNumberIfAvailable().getId()).isEqualTo(parkingSpot.getId());
+        assertThat(parkingService.getNextParkingNumberIfAvailable().isAvailable()).isEqualTo(true);
+
     }
 }

@@ -16,15 +16,22 @@ import java.sql.Timestamp;
 /**
  * TicketDAO linking the application with the database mySQL to get the tickets.
  *
- * @param //ticket
  * @throws Exception if the ticket cannot be retrieve or register
  */
+
 public class TicketDAO {
 
+    /**
+     * instantiate the logger arguments to get the connection to the database and records tickets.
+     */
     private static final Logger logger = LogManager.getLogger("TicketDAO");
 
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
+    /**
+     * @param ticket implements the data of the tickets  with come in and out times, price
+     * @return ticket
+     */
     public Ticket saveTicket(Ticket ticket) {
         PreparedStatement ps = null;
         Connection con = null;
@@ -43,11 +50,15 @@ public class TicketDAO {
             logger.error("Error fetching next available slot", ex);
         } finally {
             dataBaseConfig.closePreparedStatement(ps);
-            dataBaseConfig.closeConnection(con);}
-            return ticket;
-
+            dataBaseConfig.closeConnection(con);
+        }
+        return ticket;
     }
 
+    /**
+     * @param vehicleRegNumber vehicle registration number
+     * @return ticket information
+     */
     public Ticket getTicket(String vehicleRegNumber) {
         Connection con = null;
         Ticket ticket = new Ticket();
@@ -77,6 +88,10 @@ public class TicketDAO {
         }
     }
 
+    /**
+     * @param ticket
+     * @return true if the ticket has been updated correctly
+     */
     public boolean updateTicket(Ticket ticket) {
         Connection con = null;
         try {
@@ -97,6 +112,10 @@ public class TicketDAO {
         return false;
     }
 
+    /**
+     * @param vehicleRegNumber registration number of the vehicle
+     * @return true is the user is a reccurent user
+     */
     public boolean isReccurentUser(String vehicleRegNumber) {
         Connection con = null;
         PreparedStatement ps = null;

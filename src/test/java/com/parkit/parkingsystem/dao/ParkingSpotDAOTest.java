@@ -7,10 +7,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-
 import static com.parkit.parkingsystem.constants.ParkingType.CAR;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class ParkingSpotDAOTest {
     private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
@@ -30,7 +29,7 @@ class ParkingSpotDAOTest {
     }
 
     @Test
-    public void getNextAvailableSlot() throws IOException {
+    public void getNextAvailableSlot() throws Exception {
         //GIVEN
         parkingSpot = new ParkingSpot(1, CAR, false);
 
