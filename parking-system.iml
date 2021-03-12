@@ -142,5 +142,6 @@
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:9.0" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-util:9.0" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:20.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.19.0" level="project" />
   </component>
 </module>

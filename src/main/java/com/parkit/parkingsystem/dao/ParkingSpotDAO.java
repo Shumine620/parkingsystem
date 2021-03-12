@@ -36,17 +36,19 @@ public class ParkingSpotDAO {
             logger.error("Error fetching next available slot", ex);
         } finally {
             dataBaseConfig.closeConnection(con);
-                              ;
             dataBaseConfig.closeResultSet(rs);
-
             dataBaseConfig.closePreparedStatement(ps);
         }
         return result;
     }
 
-
+    /**
+     * update the availability of that parking slot
+     * @param parkingSpot
+     * @return
+     */
     public boolean updateParking(ParkingSpot parkingSpot) {
-        //update the availability of that parking slot
+
         Connection con = null;
         try {
             con = dataBaseConfig.getConnection();

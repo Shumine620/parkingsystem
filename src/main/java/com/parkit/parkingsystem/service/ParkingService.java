@@ -50,13 +50,10 @@ public class ParkingService {
                 System.out.println("Please park your vehicle in spot number:" + parkingSpot.getId());
                 System.out.println("Recorded in-time for vehicle number:" + vehicleRegNumber + " is:" + inTime);
 
-
-
                 if (ticketDAO.isReccurentUser(vehicleRegNumber)) {
                     System.out.println("Welcome back! As a recurring user of our parking lot, you'll benefit from a 5% discount.");
                 }
             }
-
         } catch (Exception e) {
             logger.error("Unable to process incoming vehicle", e);
         }
@@ -68,7 +65,7 @@ public class ParkingService {
     }
 
     public ParkingSpot getNextParkingNumberIfAvailable() {
-        int parkingNumber = 0;
+        int parkingNumber;
         ParkingSpot parkingSpot = null;
         try {
             ParkingType parkingType = getVehicleType();
@@ -76,13 +73,12 @@ public class ParkingService {
             if (parkingNumber > 0) {
                 parkingSpot = new ParkingSpot(parkingNumber, parkingType, true);
             } else {
-                throw new Exception("Error fetching parking number from DB. Parking slots might be full");
+               throw new Exception("Error fetching parking number from DB. Parking slots might be full");
             }
-        } catch (IllegalArgumentException ie) {
-            logger.error("Error parsing user input for type of vehicle", ie);
+       // } catch (IllegalArgumentException ie) {
+           // logger.error("Error parsing user input for type of vehicle", ie);
         } catch (Exception e) {
             logger.error("Error fetching next available parking slot", e);
-        } finally {
         }
         return parkingSpot;
     }
@@ -129,4 +125,6 @@ public class ParkingService {
             logger.error("Unable to process exiting vehicle", e);
         }
     }
+
+
 }

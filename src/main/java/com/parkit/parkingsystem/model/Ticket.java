@@ -63,6 +63,6 @@ public class Ticket {
     public boolean getReccurentUser() {return reccurentUser; }
     public void setReccurentUser(boolean reccurentUser) {
         this.reccurentUser = reccurentUser;
-     }
+    }
 
 }
