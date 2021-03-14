@@ -52,7 +52,7 @@ public class ParkingSpotDAO {
      * Update the availability of that parking slot.
      * @param parkingSpot data on the parking spots
      * @return True when the parkingSpot is updated
-     * @throws Exception ex in case the availability cannot be return
+     * @throws Exception in case the availability cannot be return
      */
 
     public boolean updateParking (ParkingSpot parkingSpot) throws Exception {

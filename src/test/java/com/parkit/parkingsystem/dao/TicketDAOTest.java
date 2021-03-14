@@ -23,9 +23,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.lenient;
 
 
+/**
+ * Testing the link with the application and the database mySQL to get the tickets.
+ */
 @ExtendWith(MockitoExtension.class)
-public
-class TicketDAOTest {
+public class TicketDAOTest {
 
     private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
     private static ParkingSpotDAO parkingSpotDAO;
@@ -48,9 +50,8 @@ class TicketDAOTest {
 
     }
 
-
     /**
-     * @throws Exception
+     * @throws Exception if the ticket cannot be retrieve or register
      */
     @BeforeEach
     private void setUpPerTest() throws Exception {
@@ -87,6 +88,9 @@ class TicketDAOTest {
 
     }
 
+    /**
+     * @throws IOException  if the ticket cannot be retrieve or register
+     */
     @Test
     public void testGetTicket() throws IOException {
         //GIVEN
@@ -109,7 +113,9 @@ class TicketDAOTest {
         return;
     }
 
-
+    /**
+     * @throws IOException  if the ticket cannot be retrieve or register
+     */
     @Test
     public void testUpdateTicket() throws IOException {
         //GIVEN
@@ -131,6 +137,10 @@ class TicketDAOTest {
         assertTrue(ticketDAO.updateTicket(ticket));
 
     }
+
+    /**
+     * @throws IOException if the ticket cannot be retrieve or register
+     */
     @Test
     public void testIsReccurentUser() throws IOException {
         //GIVEN
@@ -149,6 +159,5 @@ class TicketDAOTest {
         ticket.setOutTime(new Date());
         //THEN
         assertNotNull(parkingSpotDAO);
-
     }
 }

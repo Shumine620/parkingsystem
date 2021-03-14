@@ -15,7 +15,6 @@ import java.sql.Timestamp;
 
 /**
  * TicketDAO linking the application with the database mySQL to get the tickets.
- *
  * @throws Exception if the ticket cannot be retrieve or register
  */
 

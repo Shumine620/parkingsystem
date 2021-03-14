@@ -12,34 +12,20 @@ import org.apache.logging.log4j.Logger;
 import java.util.Date;
 
 /**
- *Class accessing to the database to provide all the parking services.
+ * Class accessing to the database to provide all the parking services.
  */
 public class ParkingService {
 
-        private static final Logger logger = LogManager.getLogger("ParkingService");
-
-    /**
-     *
-     */
-        private static FareCalculatorService fareCalculatorService = new FareCalculatorService();
-
-    /**
-     *
-     */
-        private InputReaderUtil inputReaderUtil;
-    /**
-     *
-     */
-        private ParkingSpotDAO parkingSpotDAO;
-    /**
-     *
-     */
-        private TicketDAO ticketDAO;
+    private static final Logger logger = LogManager.getLogger("ParkingService");
+    private static FareCalculatorService fareCalculatorService = new FareCalculatorService();
+    private InputReaderUtil inputReaderUtil;
+    private ParkingSpotDAO parkingSpotDAO;
+    private TicketDAO ticketDAO;
 
     /**
      * @param inputReaderUtil Reading the information from the input user
-     * @param parkingSpotDAO Parking spot register in the database
-     * @param ticketDAO Ticket register in the database
+     * @param parkingSpotDAO  Parking spot register in the database
+     * @param ticketDAO       Ticket register in the database
      */
     public ParkingService(InputReaderUtil inputReaderUtil, ParkingSpotDAO parkingSpotDAO, TicketDAO ticketDAO) {
         this.inputReaderUtil = inputReaderUtil;
@@ -49,6 +35,7 @@ public class ParkingService {
 
     /**
      * Process when a vehicle is getting in the car park.
+     *
      * @see Ticket
      * @see ParkingSpotDAO
      */
@@ -103,15 +90,16 @@ public class ParkingService {
             parkingNumber = parkingSpotDAO.getNextAvailableSlot(parkingType);
             if (parkingNumber > 0) {
                 parkingSpot = new ParkingSpot(parkingNumber, parkingType, true);
+                return parkingSpot;
             } else {
                 throw new Exception("Error fetching parking number from DB. Parking slots might be full");
             }
-            // } catch (IllegalArgumentException ie) {
-            // logger.error("Error parsing user input for type of vehicle", ie);
+        } catch (IllegalArgumentException ie) {
+            logger.error("Error parsing user input for type of vehicle", ie);
         } catch (Exception e) {
             logger.error("Error fetching next available parking slot", e);
         }
-        return parkingSpot;
+        return null;
     }
 
     /**
@@ -139,6 +127,7 @@ public class ParkingService {
 
     /**
      * Process when a vehicle is exiting the car park.
+     *
      * @see Ticket
      */
     public void processExitingVehicle() {

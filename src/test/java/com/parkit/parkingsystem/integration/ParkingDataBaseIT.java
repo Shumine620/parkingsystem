@@ -22,6 +22,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.lenient;
 
+/**
+ *
+ */
 @ExtendWith(MockitoExtension.class)
 
 public class ParkingDataBaseIT {
@@ -38,6 +41,9 @@ public class ParkingDataBaseIT {
     @Mock
     public static InputReaderUtil inputReaderUtil;
 
+    /**
+     *
+     */
     @BeforeAll
     private static void setUp() {
         parkingSpotDAO = new ParkingSpotDAO();
@@ -58,12 +64,17 @@ public class ParkingDataBaseIT {
         dataBasePrepareService.clearDataBaseEntries();
     }
 
+    /**
+     *
+     */
     @AfterAll
     private static void tearDown(){
         dataBasePrepareService.clearDataBaseEntries();
-
     }
 
+    /**
+     * @throws IOException
+     */
     @Test  //Check that a ticket is actually saved in DB and Parking table is updated with availability
     public void testParkingACar() throws IOException {
         //GIVEN
@@ -82,6 +93,9 @@ public class ParkingDataBaseIT {
         assertFalse(ticketDAO.getTicket("ABCDEF").getParkingSpot().isAvailable());
     }
 
+    /**
+     * @throws Exception
+     */
     @Test  //Check that the fare generated and out time are populated correctly in the database
     public void testParkingLotExitCar() throws Exception {
 
@@ -104,5 +118,4 @@ public class ParkingDataBaseIT {
         assertNotNull(ticket.getOutTime());
         assertEquals(0, ticket.getPrice());
     }
-
 }

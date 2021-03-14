@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 
 /**
- *InputReaderUtil allowed the reading of the data enter by the user.
+ * InputReaderUtil allowed the reading of the data enter by the user.
  */
 public class InputReaderUtil {
 
@@ -14,7 +14,7 @@ public class InputReaderUtil {
     private static Scanner scan = new Scanner(System.in);
 
     /**
-     * Reading the entered data of the user
+     * Reading the entered data of the user.
      * @return the user data as input
      */
     public int readSelection() {

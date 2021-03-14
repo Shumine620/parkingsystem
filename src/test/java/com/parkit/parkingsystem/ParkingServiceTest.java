@@ -101,7 +101,7 @@ public class ParkingServiceTest {
         //THEN
         assertNull(parkingService.getNextParkingNumberIfAvailable());
         assertThat(parkingService.getNextParkingNumberIfAvailable().getId()).isEqualTo(parkingSpot.getId());
-        assertThat(parkingService.getNextParkingNumberIfAvailable().isAvailable()).isEqualTo(true);
+       assertThat(parkingService.getNextParkingNumberIfAvailable().isAvailable()).isEqualTo(true);
 
     }
 }
