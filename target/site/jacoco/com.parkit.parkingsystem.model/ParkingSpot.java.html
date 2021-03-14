@@ -2,52 +2,73 @@
 
 import com.parkit.parkingsystem.constants.ParkingType;
 
+/**
+ * ParkingSpot class indicate the information of each parking spot to allowed process and ticket issuance.
+ *
+ */
 public class ParkingSpot {
     private int number;
     private ParkingType parkingType;
     private boolean isAvailable;
 
-<span class="fc" id="L10">    public ParkingSpot(int number, ParkingType parkingType, boolean isAvailable) {</span>
-<span class="fc" id="L11">        this.number = number;</span>
-<span class="fc" id="L12">        this.parkingType = parkingType;</span>
-<span class="fc" id="L13">        this.isAvailable = isAvailable;</span>
-<span class="fc" id="L14">    }</span>
+    /**
+     * @param number the number of the parking spot
+     * @param parkingType the type of the vehicle
+     * @param isAvailable if the spot is available or not
+     */
+<span class="fc" id="L19">    public ParkingSpot(int number, ParkingType parkingType, boolean isAvailable) {</span>
+<span class="fc" id="L20">        this.number = number;</span>
+<span class="fc" id="L21">        this.parkingType = parkingType;</span>
+<span class="fc" id="L22">        this.isAvailable = isAvailable;</span>
+<span class="fc" id="L23">    }</span>
 
+    /**
+     * @return the parking spot's number
+     */
     public int getId() {
-<span class="fc" id="L17">        return number;</span>
+<span class="fc" id="L29">        return number;</span>
     }
 
+    /**
+     * @param number the parking spot's number
+     */
     public void setId(int number) {
-<span class="nc" id="L21">        this.number = number;</span>
-<span class="nc" id="L22">    }</span>
+<span class="nc" id="L36">        this.number = number;</span>
+<span class="nc" id="L37">    }</span>
 
+    /**
+     * @return type of parking
+     */
     public ParkingType getParkingType() {
-<span class="fc" id="L25">        return parkingType;</span>
+<span class="fc" id="L43">        return parkingType;</span>
     }
 
     public void setParkingType(ParkingType parkingType) {
-<span class="nc" id="L29">        this.parkingType = parkingType;</span>
-<span class="nc" id="L30">    }</span>
+<span class="nc" id="L47">        this.parkingType = parkingType;</span>
+<span class="nc" id="L48">    }</span>
 
+    /**
+     * @return  true is the spot is available
+     */
     public boolean isAvailable() {
-<span class="fc" id="L33">        return isAvailable;</span>
+<span class="fc" id="L54">        return isAvailable;</span>
     }
 
     public void setAvailable(boolean available) {
-<span class="fc" id="L37">        isAvailable = available;</span>
-<span class="fc" id="L38">    }</span>
+<span class="fc" id="L58">        isAvailable = available;</span>
+<span class="fc" id="L59">    }</span>
 
     @Override
     public boolean equals(Object o) {
-<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (this == o) return true;</span>
-<span class="pc bpc" id="L43" title="3 of 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
-<span class="nc" id="L44">        ParkingSpot that = (ParkingSpot) o;</span>
-<span class="nc bnc" id="L45" title="All 2 branches missed.">        return number == that.number;</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L64" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L65">        ParkingSpot that = (ParkingSpot) o;</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        return number == that.number;</span>
     }
 
     @Override
     public int hashCode() {
-<span class="fc" id="L50">        return number;</span>
+<span class="nc" id="L71">        return number;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

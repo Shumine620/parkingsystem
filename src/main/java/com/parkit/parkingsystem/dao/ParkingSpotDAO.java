@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- *Class making the link with the database.
+ * Class making the link with the database.
  */
 public class ParkingSpotDAO {
     private static final Logger logger = LogManager.getLogger("ParkingSpotDAO");
@@ -50,12 +50,13 @@ public class ParkingSpotDAO {
 
     /**
      * Update the availability of that parking slot.
+     *
      * @param parkingSpot data on the parking spots
      * @return True when the parkingSpot is updated
      * @throws Exception in case the availability cannot be return
      */
 
-    public boolean updateParking (ParkingSpot parkingSpot) throws Exception {
+    public boolean updateParking(ParkingSpot parkingSpot) throws Exception {
 
         Connection con = null;
         try {

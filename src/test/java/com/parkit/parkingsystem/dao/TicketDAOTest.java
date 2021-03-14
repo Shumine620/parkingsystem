@@ -33,8 +33,8 @@ public class TicketDAOTest {
     private static ParkingSpotDAO parkingSpotDAO;
     private static TicketDAO ticketDAO;
     public static DataBasePrepareService dataBasePrepareService;
-    private static Ticket ticket;
-    private static ParkingSpot parkingSpot;
+    public static Ticket ticket;
+    public static ParkingSpot parkingSpot;
     private static ParkingType parkingType;
 
     @Mock
@@ -54,14 +54,14 @@ public class TicketDAOTest {
      * @throws Exception if the ticket cannot be retrieve or register
      */
     @BeforeEach
-    private void setUpPerTest() throws Exception {
+    public void setUpPerTest() throws Exception {
         lenient().when(inputReaderUtil.readSelection()).thenReturn(1);
         lenient().when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
         dataBasePrepareService.clearDataBaseEntries();
     }
 
     @AfterAll
-    private static void tearDown() {
+    public static void tearDown() {
         dataBasePrepareService.clearDataBaseEntries();
 
     }
@@ -70,7 +70,7 @@ public class TicketDAOTest {
     public void testSaveTicket() throws IOException {
         //GIVEN
         Ticket ticket = new Ticket();
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO, ticket);
         ticket.setParkingSpot(parkingSpot);
         parkingType = ParkingType.BIKE;
         parkingSpotDAO.getNextAvailableSlot(parkingType);
@@ -89,13 +89,13 @@ public class TicketDAOTest {
     }
 
     /**
-     * @throws IOException  if the ticket cannot be retrieve or register
+     * @throws IOException if the ticket cannot be retrieve or register
      */
     @Test
     public void testGetTicket() throws IOException {
         //GIVEN
         Ticket ticket = new Ticket();
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO, ticket);
         ticket.setParkingSpot(parkingSpot);
         parkingType = ParkingType.BIKE;
         parkingSpotDAO.getNextAvailableSlot(parkingType);
@@ -104,8 +104,7 @@ public class TicketDAOTest {
         parkingService.processIncomingVehicle();
         ticket.setVehicleRegNumber("MPLKN");
         ticket.setPrice(1.0);
-        ticket.setInTime(new Date());
-        ticket.setOutTime(new Date());
+
         ticketDAO.getTicket("MPLKN");
         //THEN
         assertNotNull(parkingSpotDAO);
@@ -114,13 +113,13 @@ public class TicketDAOTest {
     }
 
     /**
-     * @throws IOException  if the ticket cannot be retrieve or register
+     * @throws IOException if the ticket cannot be retrieve or register
      */
     @Test
     public void testUpdateTicket() throws IOException {
         //GIVEN
         Ticket ticket = new Ticket();
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO, ticket);
         ticket.setParkingSpot(parkingSpot);
         parkingType = ParkingType.BIKE;
         parkingSpotDAO.getNextAvailableSlot(parkingType);
@@ -145,7 +144,7 @@ public class TicketDAOTest {
     public void testIsReccurentUser() throws IOException {
         //GIVEN
         Ticket ticket = new Ticket();
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO, ticket);
         ticket.setParkingSpot(parkingSpot);
         parkingType = ParkingType.BIKE;
         parkingSpotDAO.getNextAvailableSlot(parkingType);

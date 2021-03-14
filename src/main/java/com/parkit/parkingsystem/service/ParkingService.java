@@ -12,25 +12,29 @@ import org.apache.logging.log4j.Logger;
 import java.util.Date;
 
 /**
- * Class accessing to the database to provide all the parking services.
+ * Class accessing all the parking services.
  */
 public class ParkingService {
 
     private static final Logger logger = LogManager.getLogger("ParkingService");
-    private static FareCalculatorService fareCalculatorService = new FareCalculatorService();
+    public static FareCalculatorService fareCalculatorService = new FareCalculatorService();
+    public Ticket ticket;
     private InputReaderUtil inputReaderUtil;
     private ParkingSpotDAO parkingSpotDAO;
     private TicketDAO ticketDAO;
+
 
     /**
      * @param inputReaderUtil Reading the information from the input user
      * @param parkingSpotDAO  Parking spot register in the database
      * @param ticketDAO       Ticket register in the database
+     * @param ticket          Current ticket
      */
-    public ParkingService(InputReaderUtil inputReaderUtil, ParkingSpotDAO parkingSpotDAO, TicketDAO ticketDAO) {
+    public ParkingService(InputReaderUtil inputReaderUtil, ParkingSpotDAO parkingSpotDAO, TicketDAO ticketDAO, Ticket ticket) {
         this.inputReaderUtil = inputReaderUtil;
         this.parkingSpotDAO = parkingSpotDAO;
         this.ticketDAO = ticketDAO;
+        this.ticket = ticket;
     }
 
     /**
@@ -53,9 +57,11 @@ public class ParkingService {
                 //ticket.setId(ticketID);
                 ticket.setParkingSpot(parkingSpot);
                 ticket.setVehicleRegNumber(vehicleRegNumber);
-                ticket.setPrice(0);
+                ticket.setPrice(0.0);
                 ticket.setInTime(inTime);
                 ticket.setOutTime(null);
+                ticket.setReccurentUser(false);
+                Ticket isReccurentUser = ticketDAO.getTicket(vehicleRegNumber);
                 ticketDAO.saveTicket(ticket);
                 System.out.println("Generated Ticket and saved in DB");
                 System.out.println("Please park your vehicle in spot number:" + parkingSpot.getId());
@@ -81,16 +87,16 @@ public class ParkingService {
 
     /**
      * @return the parking spot
+     * @see ParkingSpot
      */
     public ParkingSpot getNextParkingNumberIfAvailable() {
-        int parkingNumber;
-        ParkingSpot parkingSpot = null;
+        int parkingNumber = 0;
+        ParkingSpot parkingSpot = new ParkingSpot(parkingNumber,ParkingType.CAR,true);
         try {
             ParkingType parkingType = getVehicleType();
             parkingNumber = parkingSpotDAO.getNextAvailableSlot(parkingType);
             if (parkingNumber > 0) {
                 parkingSpot = new ParkingSpot(parkingNumber, parkingType, true);
-                return parkingSpot;
             } else {
                 throw new Exception("Error fetching parking number from DB. Parking slots might be full");
             }
@@ -99,7 +105,7 @@ public class ParkingService {
         } catch (Exception e) {
             logger.error("Error fetching next available parking slot", e);
         }
-        return null;
+        return parkingSpot;
     }
 
     /**
@@ -151,4 +157,6 @@ public class ParkingService {
             logger.error("Unable to process exiting vehicle", e);
         }
     }
+
+
 }

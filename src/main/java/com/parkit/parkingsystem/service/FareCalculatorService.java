@@ -16,12 +16,13 @@ public class FareCalculatorService {
      */
     public void calculateFare(Ticket ticket) {
         if ((ticket.getOutTime() == null) || (ticket.getOutTime().before(ticket.getInTime()))) {
-            throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime());//remove .toString() to avoid nullpointer exception
+            assert ticket.getOutTime() != null;
+            throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime().toString()); //to avoid nullPointer exception
         }
         long inHour = ticket.getInTime().getTime();
         long outHour = ticket.getOutTime().getTime();
 
-        float duration = (float) ((outHour - inHour) / (60 * 60 * 1000.00)); // Convert duration in milliseconds then in hour
+        double duration = (outHour - inHour) / (60 * 60 * 1000.00); // Convert duration in milliseconds then in hour
 
         if (duration > 0.5) {
 

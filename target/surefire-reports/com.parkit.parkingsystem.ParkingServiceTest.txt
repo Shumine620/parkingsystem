@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.parkit.parkingsystem.ParkingServiceTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.447 s <<< FAILURE! - in com.parkit.parkingsystem.ParkingServiceTest
-getNextParkingNumberIfAvailableTest  Time elapsed: 0.857 s  <<< ERROR!
+Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.551 s <<< FAILURE! - in com.parkit.parkingsystem.ParkingServiceTest
+getNextParkingNumberIfAvailableTest  Time elapsed: 0.781 s  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "com.parkit.parkingsystem.model.ParkingSpot.getId()" because the return value of "com.parkit.parkingsystem.service.ParkingService.getNextParkingNumberIfAvailable()" is null
-	at com.parkit.parkingsystem.ParkingServiceTest.getNextParkingNumberIfAvailableTest(ParkingServiceTest.java:103)
+	at com.parkit.parkingsystem.ParkingServiceTest.getNextParkingNumberIfAvailableTest(ParkingServiceTest.java:116)
 
