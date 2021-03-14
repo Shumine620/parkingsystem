@@ -4,7 +4,6 @@ import com.parkit.parkingsystem.constants.ParkingType;
 
 /**
  * ParkingSpot class indicate the information of each parking spot to allowed process and ticket issuance.
- *
  */
 public class ParkingSpot {
     private int number;
@@ -12,7 +11,7 @@ public class ParkingSpot {
     private boolean isAvailable;
 
     /**
-     * @param number the number of the parking spot
+     * @param number      the number of the parking spot
      * @param parkingType the type of the vehicle
      * @param isAvailable if the spot is available or not
      */
@@ -48,7 +47,7 @@ public class ParkingSpot {
     }
 
     /**
-     * @return  true is the spot is available
+     * @return true is the spot is available
      */
     public boolean isAvailable() {
         return isAvailable;

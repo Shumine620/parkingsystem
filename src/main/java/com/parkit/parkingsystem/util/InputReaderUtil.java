@@ -15,6 +15,7 @@ public class InputReaderUtil {
 
     /**
      * Reading the entered data of the user.
+     *
      * @return the user data as input
      */
     public int readSelection() {

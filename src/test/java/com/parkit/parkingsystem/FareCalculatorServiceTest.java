@@ -15,6 +15,9 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * Class testing possible fares options.
+ */
 public class FareCalculatorServiceTest {
 
     private static FareCalculatorService fareCalculatorService;
@@ -23,12 +26,12 @@ public class FareCalculatorServiceTest {
     private Date outTime;
 
     @BeforeAll
-    private static void setUp() {
+    public static void setUp() {
         fareCalculatorService = new FareCalculatorService();
     }
 
     @BeforeEach
-    private void setUpPerTest() {
+    public void setUpPerTest() {
         ticket = new Ticket();
     }
 
@@ -121,11 +124,11 @@ public class FareCalculatorServiceTest {
         fareCalculatorService.calculateFare(ticket);
 
         //THEN
-        assertEquals((0.75 * Fare.CAR_RATE_PER_HOUR), ticket.getPrice());
+        assertEquals(((0.75) * Fare.CAR_RATE_PER_HOUR), ticket.getPrice());
     }
 
     @Test
-    public void calculateFareCarWithMoreThanADayParkingTime()  {
+    public void calculateFareCarWithMoreThanADayParkingTime() {
         Date inTime = new Date();
         inTime.setTime(System.currentTimeMillis() - (24 * 60 * 60 * 1000));//24 hours parking time should give 24 * parking fare per hour
         Date outTime = new Date();
@@ -139,7 +142,7 @@ public class FareCalculatorServiceTest {
     }
 
     @Test
-    public void calculateFareBikeWithMoreThanADayParkingTime(){
+    public void calculateFareBikeWithMoreThanADayParkingTime() {
         Date inTime = new Date();
         inTime.setTime(System.currentTimeMillis() - (24 * 60 * 60 * 1000));
         Date outTime = new Date();
@@ -193,12 +196,12 @@ public class FareCalculatorServiceTest {
         ticket.setParkingSpot(parkingSpot);
         ticket.setReccurentUser(true);
         fareCalculatorService.calculateFare(ticket);
-        assertEquals(Fare.CAR_RATE_PER_HOUR - (Fare.CAR_RATE_PER_HOUR * Fare.PERCENTAGE_DISCOUNT/100), ticket.getPrice());
+        assertEquals(Fare.CAR_RATE_PER_HOUR - (Fare.CAR_RATE_PER_HOUR * Fare.PERCENTAGE_DISCOUNT / 100), ticket.getPrice());
 
     }
 
     @Test
-    public void calculateDiscountFareBikeForRecurrentUser() throws NullPointerException  {//Discount Biker Fees
+    public void calculateDiscountFareBikeForRecurrentUser() throws NullPointerException {//Discount Biker Fees
         //GIVEN
         Date inTime = new Date();
         inTime.setTime(System.currentTimeMillis() - (60 * 60 * 1000));
