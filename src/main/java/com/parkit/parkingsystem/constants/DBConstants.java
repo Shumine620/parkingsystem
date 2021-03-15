@@ -1,7 +1,7 @@
 package com.parkit.parkingsystem.constants;
 
 /**
- * SQL commands to be run.
+ * SQL requests to be run.
  */
 public class DBConstants {
 

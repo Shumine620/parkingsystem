@@ -16,13 +16,30 @@ import java.util.Date;
  */
 public class ParkingService {
 
+    /**
+     * @see Logger
+     */
     private static final Logger logger = LogManager.getLogger("ParkingService");
+    /**
+     * @see InputReaderUtil
+     */
     private final InputReaderUtil inputReaderUtil;
+    /**
+     * @see ParkingSpot
+     */
     private final ParkingSpotDAO parkingSpotDAO;
+    /**
+     * @see TicketDAO
+     */
     private final TicketDAO ticketDAO;
+    /**
+     * @see FareCalculatorService
+     */
     public static final FareCalculatorService fareCalculatorService = new FareCalculatorService();
+    /**
+     * @see Ticket
+     */
     public Ticket ticket;
-
 
     /**
      * @param inputReaderUtil Reading the information from the input user
@@ -47,7 +64,6 @@ public class ParkingService {
                 String vehicleRegNumber = getVehicleRegNumber();
                 parkingSpot.setAvailable(false);
                 parkingSpotDAO.updateParking(parkingSpot);//allot this parking space and mark it's availability as false
-
                 Date inTime = new Date();
                 Ticket ticket = new Ticket();
                 //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
@@ -57,7 +73,6 @@ public class ParkingService {
                 ticket.setInTime(inTime);
                 ticket.setOutTime(null);
                 ticket.setReccurentUser(false);
-                Ticket isReccurentUser = ticketDAO.getTicket(vehicleRegNumber);
                 ticketDAO.saveTicket(ticket);
                 System.out.println("Generated Ticket and saved in DB");
                 System.out.println("Please park your vehicle in spot number:" + parkingSpot.getId());

@@ -17,7 +17,6 @@ public class DataBaseConfig {
 
     /**
      * Database logger configuration with user name and password.
-     *
      * @return Database connection
      * @throws SQLException if connection cannot be done
      */
