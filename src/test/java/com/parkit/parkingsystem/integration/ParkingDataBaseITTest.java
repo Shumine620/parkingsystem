@@ -31,11 +31,10 @@ import static org.mockito.Mockito.lenient;
 
 public class ParkingDataBaseITTest {
 
-    private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
+    private static final DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
     private static ParkingSpotDAO parkingSpotDAO;
     private static TicketDAO ticketDAO;
     private static DataBasePrepareService dataBasePrepareService;
-    private static Ticket ticket;
     private static FareCalculatorService fareCalculatorService;
     private static ParkingSpot parkingSpot;
     private static ParkingType parkingType;
@@ -72,7 +71,7 @@ public class ParkingDataBaseITTest {
     }
 
     /**
-     * @throws IOException
+     * @throws IOException Exception if the parking cannot be done
      */
     @Test  //Check that a ticket is actually saved in DB and Parking table is updated with availability
     public void testParkingACar() throws IOException {
@@ -94,13 +93,13 @@ public class ParkingDataBaseITTest {
     }
 
     /**
-     * @throws Exception
+     * @throws Exception Exception if the parking cannot be done
      */
     @Test  //Check that the fare generated and out time are populated correctly in the database
     public void testParkingLotExitCar() throws Exception {
 
         //GIVEN
-        ticket = new Ticket();
+        Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingType = ParkingType.CAR;
         parkingService.processIncomingVehicle();

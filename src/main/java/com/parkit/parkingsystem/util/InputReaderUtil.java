@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class InputReaderUtil {
 
     private static final Logger logger = LogManager.getLogger("InputReaderUtil");
-    private static Scanner scan = new Scanner(System.in);
+    private static final Scanner scan = new Scanner(System.in);
 
     /**
      * Reading the entered data of the user.
@@ -20,8 +20,7 @@ public class InputReaderUtil {
      */
     public int readSelection() {
         try {
-            int input = Integer.parseInt(scan.nextLine());
-            return input;
+            return Integer.parseInt(scan.nextLine());
         } catch (Exception e) {
             logger.error("Error while reading user input from Shell", e);
             System.out.println("Error reading input. Please enter valid number for proceeding further");

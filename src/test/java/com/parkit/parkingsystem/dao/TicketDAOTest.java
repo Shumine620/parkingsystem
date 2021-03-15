@@ -18,6 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.IOException;
 import java.util.Date;
 
+import static com.parkit.parkingsystem.constants.ParkingType.BIKE;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.lenient;
@@ -57,6 +58,7 @@ public class TicketDAOTest {
         lenient().when(inputReaderUtil.readSelection()).thenReturn(1);
         lenient().when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
         dataBasePrepareService.clearDataBaseEntries();
+        ParkingSpot parkingSpot = new ParkingSpot(1,BIKE,true);
     }
 
     @AfterAll
@@ -71,7 +73,7 @@ public class TicketDAOTest {
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ticket.setParkingSpot(parkingSpot);
-        parkingType = ParkingType.BIKE;
+        parkingType = BIKE;
         parkingSpotDAO.getNextAvailableSlot(parkingType);
 
         //WHEN
@@ -83,7 +85,7 @@ public class TicketDAOTest {
         ticketDAO.saveTicket(ticket);
         //THEN
         assertNotNull(parkingSpotDAO);
-      //  assertTrue(ticketDAO.saveTicket(ticket));
+      assertTrue(ticketDAO.saveTicket(ticket));
 
 
     }
@@ -97,7 +99,7 @@ public class TicketDAOTest {
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ticket.setParkingSpot(parkingSpot);
-        parkingType = ParkingType.BIKE;
+        parkingType = BIKE;
         parkingSpotDAO.getNextAvailableSlot(parkingType);
 
         //WHEN
@@ -121,7 +123,7 @@ public class TicketDAOTest {
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ticket.setParkingSpot(parkingSpot);
-        parkingType = ParkingType.BIKE;
+        parkingType = BIKE;
         parkingSpotDAO.getNextAvailableSlot(parkingType);
 
         //WHEN
@@ -146,7 +148,7 @@ public class TicketDAOTest {
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ticket.setParkingSpot(parkingSpot);
-        parkingType = ParkingType.BIKE;
+        parkingType = BIKE;
         parkingSpotDAO.getNextAvailableSlot(parkingType);
 
         //WHEN

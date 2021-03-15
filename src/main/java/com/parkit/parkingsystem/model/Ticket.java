@@ -1,5 +1,6 @@
 package com.parkit.parkingsystem.model;
 
+import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -75,42 +76,55 @@ public class Ticket {
      * @return Getter time of vehicle getting in.
      */
     public Date getInTime() {
-        return inTime;
-    }
+        if (inTime==null) {
+            return null;
+        }else{
+            return new Date(inTime.getTime());
+        }
+           }
 
     /**
      * @param inTime time of vehicle getting in.
      */
     public void setInTime(Date inTime) {
-        this.inTime = inTime;
-    }
+        if (inTime==null) {
+           this.inTime = null;
+        }else{
+           this.inTime = new Date(inTime.getTime());
+    }}
 
     /**
      * @return Getter time of vehicle getting out.
      */
-    public Date getOutTime() {
-        return outTime;
-    }
-
+            public Date getOutTime(){
+            if (outTime==null) {
+                return null;
+            }else{
+                return new Date(outTime.getTime());
+            }
+        }
     /**
      * @param outTime time of vehicle getting out.
      */
-    public void setOutTime(Date outTime) {
-        this.outTime = outTime;
-    }
+        public void setOutTime(Date outTime) {
+            if (inTime == null) {
+                this.outTime = null;
+            } else {
+                this.outTime = new Date(outTime.getTime());
+            }}
 
-    /**
-     * @return Getter true is the user is reccurent to the parking system.
-     */
-    public boolean getReccurentUser() {
-        return reccurentUser;
-    }
+            /**
+             * @return Getter true is the user is reccurent to the parking system.
+             */
+            public boolean getReccurentUser () {
+                return reccurentUser;
+            }
 
-    /**
-     * @param reccurentUser true is the user is reccurent to the parking system.
-     */
-    public void setReccurentUser(boolean reccurentUser) {
-        this.reccurentUser = reccurentUser;
-    }
+            /**
+             * @param reccurentUser true is the user is reccurent to the parking system.
+             */
+            public void setReccurentUser ( boolean reccurentUser){
+                this.reccurentUser = reccurentUser;
+            }
+        }
 
-}

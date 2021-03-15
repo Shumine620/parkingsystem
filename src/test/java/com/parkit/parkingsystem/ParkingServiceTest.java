@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
- *
+ * Class Test for the parking services.
  */
 @ExtendWith(MockitoExtension.class)
 
@@ -42,12 +42,13 @@ public class ParkingServiceTest {
     private static ParkingSpotDAO parkingSpotDAO;
     @Mock
     private static TicketDAO ticketDAO;
-    private Date inTime;
-    private Date outTime;
+
+    //private Date inTime;
+    //private Date outTime;
 
 
     @BeforeEach
-    void setUpPerTest() throws Exception {
+    void setUpPerTest(){
         try {
             lenient().when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
 
