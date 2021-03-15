@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.parkit.parkingsystem.ParkingServiceTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.017 s <<< FAILURE! - in com.parkit.parkingsystem.ParkingServiceTest
-getNextParkingNumberIfAvailableTest  Time elapsed: 0.752 s  <<< ERROR!
-java.lang.NullPointerException: Cannot invoke "com.parkit.parkingsystem.model.ParkingSpot.getId()" because the return value of "com.parkit.parkingsystem.service.ParkingService.getNextParkingNumberIfAvailable()" is null
-	at com.parkit.parkingsystem.ParkingServiceTest.getNextParkingNumberIfAvailableTest(ParkingServiceTest.java:115)
+Tests run: 5, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.593 s <<< FAILURE! - in com.parkit.parkingsystem.ParkingServiceTest
+getNextParkingNumberIfAvailableTest  Time elapsed: 0.812 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <3> but was: <com.parkit.parkingsystem.model.ParkingSpot@0>
+	at com.parkit.parkingsystem.ParkingServiceTest.getNextParkingNumberIfAvailableTest(ParkingServiceTest.java:114)
 

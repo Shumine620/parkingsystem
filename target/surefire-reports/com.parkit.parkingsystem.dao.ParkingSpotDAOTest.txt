@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.parkit.parkingsystem.dao.ParkingSpotDAOTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 40.199 s <<< FAILURE! - in com.parkit.parkingsystem.dao.ParkingSpotDAOTest
-getNextAvailableSlot  Time elapsed: 40.153 s  <<< FAILURE!
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 46.369 s <<< FAILURE! - in com.parkit.parkingsystem.dao.ParkingSpotDAOTest
+getNextAvailableSlot  Time elapsed: 46.322 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <2> but was: <1>
-	at com.parkit.parkingsystem.dao.ParkingSpotDAOTest.getNextAvailableSlot(ParkingSpotDAOTest.java:52)
+	at com.parkit.parkingsystem.dao.ParkingSpotDAOTest.getNextAvailableSlot(ParkingSpotDAOTest.java:51)
 
