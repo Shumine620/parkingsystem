@@ -3,11 +3,14 @@ package com.parkit.parkingsystem.dao;
 import com.parkit.parkingsystem.integration.config.DataBaseTestConfig;
 import com.parkit.parkingsystem.integration.service.DataBasePrepareService;
 import com.parkit.parkingsystem.model.ParkingSpot;
-import com.parkit.parkingsystem.model.Ticket;
+import com.parkit.parkingsystem.service.ParkingService;
+import com.parkit.parkingsystem.util.InputReaderUtil;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
+import static com.parkit.parkingsystem.ParkingServiceTest.parkingService;
 import static com.parkit.parkingsystem.constants.ParkingType.CAR;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,11 +23,15 @@ class ParkingSpotDAOTest {
     private static ParkingSpotDAO parkingSpotDAO;
     private static ParkingSpot parkingSpot;
 
+    @Mock
+    public static InputReaderUtil inputReaderUtil;
+
     @BeforeEach
     public void setUpPerTest() {
         dataBasePrepareService = new DataBasePrepareService();
         parkingSpotDAO = new ParkingSpotDAO();
-        Ticket ticket = new Ticket();
+        parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, new TicketDAO());
+
     }
 
     @AfterEach
@@ -34,29 +41,25 @@ class ParkingSpotDAOTest {
 
     /**
      * Test the capacity of getting the right next available spot.
-     * @throws Exception in case an error arise when checking the database
      */
     @Test
-    public void getNextAvailableSlot() throws Exception {
+    public void getNextAvailableSlot(){
         //GIVEN
-        Ticket ticket = new Ticket();
-        parkingSpot = new ParkingSpot(1, CAR, false);
+        parkingSpot = new ParkingSpot(1, CAR, true);
 
         //WHEN
+        parkingService.processIncomingVehicle();
         parkingSpotDAO.updateParking(parkingSpot);
-        parkingSpotDAO.getNextAvailableSlot(CAR);
 
         //THEN
-        //assertFalse(parkingSpot.isAvailable());
-        assertEquals(2, parkingSpotDAO.getNextAvailableSlot(CAR));
+        assertEquals(1, parkingSpotDAO.getNextAvailableSlot(CAR));
     }
 
     /**
      * Test the capacity of updating the parking spot.
-     * @throws Exception in case an error arise when checking the database
      */
     @Test
-    void updateParking() throws Exception {
+    void updateParking(){
         //GIVEN
         parkingSpot = new ParkingSpot(2, CAR, false);
 
@@ -70,10 +73,9 @@ class ParkingSpotDAOTest {
 
     /**
      * Test the parkingSPotDAO when the ParkingType is null.
-     * @throws Exception when the program cannot be run
      */
     @Test
-    public void updateParkingWithNullParkingTypeTest() throws Exception {
+    public void updateParkingWithNullParkingTypeTest(){
         //WHEN
         ParkingSpot parkingSpot = new ParkingSpot(1, null, false);
 

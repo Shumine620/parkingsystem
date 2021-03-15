@@ -85,12 +85,12 @@ public class TicketDAO {
             logger.error("Error fetching next available slot", ex);
         } finally {
             dataBaseConfig.closeConnection(con);
-            return ticket;
-        }
+
+        } return ticket;
     }
 
     /**
-     * @param ticket
+     * @param ticket information
      * @return true if the ticket has been updated correctly
      */
     public boolean updateTicket(Ticket ticket) {
@@ -139,7 +139,7 @@ public class TicketDAO {
             dataBaseConfig.closeResultSet(rs);
             dataBaseConfig.closePreparedStatement(ps);
             dataBaseConfig.closeConnection(con);
-            return isReccurentUser;
-        }
+
+        }return isReccurentUser;
     }
 }

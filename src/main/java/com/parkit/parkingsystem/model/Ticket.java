@@ -1,6 +1,5 @@
 package com.parkit.parkingsystem.model;
 
-import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -107,7 +106,7 @@ public class Ticket {
      * @param outTime time of vehicle getting out.
      */
         public void setOutTime(Date outTime) {
-            if (inTime == null) {
+            if (outTime == null) {
                 this.outTime = null;
             } else {
                 this.outTime = new Date(outTime.getTime());

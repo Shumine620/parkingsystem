@@ -16,7 +16,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.io.IOException;
 import java.util.Date;
 
 
@@ -33,8 +32,6 @@ import static org.mockito.Mockito.*;
 public class ParkingServiceTest {
 
     public static ParkingService parkingService;
-    public ParkingSpot parkingSpot;
-    public static Ticket ticket;
 
     @Mock
     private static InputReaderUtil inputReaderUtil;
@@ -42,16 +39,12 @@ public class ParkingServiceTest {
     private static ParkingSpotDAO parkingSpotDAO;
     @Mock
     private static TicketDAO ticketDAO;
-
-    //private Date inTime;
-    //private Date outTime;
-
+    public ParkingSpot parkingSpot;
 
     @BeforeEach
-    void setUpPerTest(){
+    void setUpPerTest() {
         try {
             lenient().when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
-
             ParkingSpot parkingSpot = new ParkingSpot(1, CAR, false);
             Ticket ticket = new Ticket();
             ticket.setInTime(new Date(System.currentTimeMillis() - (60 * 60 * 1000)));
@@ -60,7 +53,6 @@ public class ParkingServiceTest {
             lenient().when(ticketDAO.getTicket(anyString())).thenReturn(ticket);
             lenient().when(ticketDAO.updateTicket(any(Ticket.class))).thenReturn(true);
             lenient().when(parkingSpotDAO.updateParking(any(ParkingSpot.class))).thenReturn(true);
-
             parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,35 +65,31 @@ public class ParkingServiceTest {
     }
 
     @Test
-    public void ProcessIncomingVehicleTest() throws Exception {
+    public void ProcessIncomingVehicleTest(){
         // GIVEN
-        parkingSpot = new ParkingSpot(1, CAR, true);
-        inputReaderUtil.readSelection();
-        inputReaderUtil.readVehicleRegistrationNumber();
-        ticketDAO.saveTicket(ticket);
-        parkingSpotDAO.updateParking(parkingSpot);
+       parkingSpot = new ParkingSpot(1, CAR, true);
 
         // WHEN
         parkingService.processIncomingVehicle();
         parkingSpotDAO.getNextAvailableSlot(CAR);
+
         // THEN
         assertThat(parkingService.getNextParkingNumberIfAvailable());
     }
 
     @Test
-    public void processExitingVehicleTest() throws Exception {
-        Ticket ticket = new Ticket();
+    public void processExitingVehicleTest(){
+
         parkingService.processExitingVehicle();
         verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));
 
     }
 
     @Test
-    public void getNextParkingNumberIfAvailableTest() throws IOException {
+    public void getNextParkingNumberIfAvailableTest(){
 
         //GIVEN
-        Ticket ticket = new Ticket();
-       parkingService.getNextParkingNumberIfAvailable();
+        parkingService.getNextParkingNumberIfAvailable();
         parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingSpot = new ParkingSpot(3, CAR, false);
 
@@ -110,17 +98,12 @@ public class ParkingServiceTest {
         lenient().when(inputReaderUtil.readSelection()).thenReturn(1);
         parkingSpotDAO.getNextAvailableSlot(CAR);
 
-
         //THEN
-        assertEquals(3,parkingService.getNextParkingNumberIfAvailable());
-       // assertNull(parkingService.getNextParkingNumberIfAvailable());
-       // assertThat(parkingService.getNextParkingNumberIfAvailable().getId()).isEqualTo(parkingSpot.getId());
-       // assertThat(parkingService.getNextParkingNumberIfAvailable().isAvailable()).isEqualTo(true);
-
+        assertThat(parkingService.getNextParkingNumberIfAvailable().isAvailable()).isEqualTo(true);
     }
 
     @Test
-    public void parkingServiceFullTest() throws IOException {
+    public void parkingServiceFullTest(){
 
         //WHEN
         lenient().when(inputReaderUtil.readSelection()).thenReturn(2);
@@ -151,11 +134,6 @@ public class ParkingServiceTest {
         parkingService.processExitingVehicle();
 
         //THEN
-        // assertEquals(2.0,ticket.getPrice());
-        assertThat(ticket.getVehicleRegNumber());
-        assertThat(ticket);
-
+        assertNotNull(ticketDAO.getTicket("AAAAA").getOutTime());
     }
-
-
 }

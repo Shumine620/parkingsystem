@@ -15,7 +15,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.io.IOException;
 import java.util.Date;
 
 import static com.parkit.parkingsystem.constants.ParkingType.BIKE;
@@ -34,7 +33,6 @@ public class TicketDAOTest {
     private static ParkingSpotDAO parkingSpotDAO;
     private static TicketDAO ticketDAO;
     public static DataBasePrepareService dataBasePrepareService;
-    public static Ticket ticket;
     public static ParkingSpot parkingSpot;
     private static ParkingType parkingType;
 
@@ -58,8 +56,7 @@ public class TicketDAOTest {
         lenient().when(inputReaderUtil.readSelection()).thenReturn(1);
         lenient().when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
         dataBasePrepareService.clearDataBaseEntries();
-        ParkingSpot parkingSpot = new ParkingSpot(1,BIKE,true);
-    }
+           }
 
     @AfterAll
     public static void tearDown() {
@@ -68,7 +65,7 @@ public class TicketDAOTest {
     }
 
     @Test
-    public void testSaveTicket() throws IOException {
+    public void testSaveTicket(){
         //GIVEN
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -85,16 +82,12 @@ public class TicketDAOTest {
         ticketDAO.saveTicket(ticket);
         //THEN
         assertNotNull(parkingSpotDAO);
-      assertTrue(ticketDAO.saveTicket(ticket));
-
+        assertTrue(ticketDAO.saveTicket(ticket));
 
     }
 
-    /**
-     * @throws IOException if the ticket cannot be retrieve or register
-     */
     @Test
-    public void testGetTicket() throws IOException {
+    public void testGetTicket(){
         //GIVEN
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -111,14 +104,10 @@ public class TicketDAOTest {
         //THEN
         assertNotNull(parkingSpotDAO);
         assertNotNull(ticketDAO.getTicket("MPLKN"));
-        return;
     }
 
-    /**
-     * @throws IOException if the ticket cannot be retrieve or register
-     */
     @Test
-    public void testUpdateTicket() throws IOException {
+    public void testUpdateTicket(){
         //GIVEN
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -139,11 +128,8 @@ public class TicketDAOTest {
 
     }
 
-    /**
-     * @throws IOException if the ticket cannot be retrieve or register
-     */
     @Test
-    public void testIsReccurentUser() throws IOException {
+    public void testIsReccurentUser(){
         //GIVEN
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);

@@ -23,9 +23,8 @@ public class ParkingSpotDAO {
     /**
      * @param parkingType Type of vehicles allowed in the parking
      * @return the number of the slot to go park in when available
-     * @throws IOException in case an error arise when checking the database
      */
-    public int getNextAvailableSlot(ParkingType parkingType) throws IOException {
+    public int getNextAvailableSlot(ParkingType parkingType){
         Connection con = null;
         int result = -1;
         PreparedStatement ps = null;
@@ -53,10 +52,9 @@ public class ParkingSpotDAO {
      *
      * @param parkingSpot data on the parking spots
      * @return True when the parkingSpot is updated
-     * @throws Exception in case the availability cannot be return
      */
 
-    public boolean updateParking(ParkingSpot parkingSpot) throws Exception {
+    public boolean updateParking(ParkingSpot parkingSpot){
 
         Connection con = null;
         try {

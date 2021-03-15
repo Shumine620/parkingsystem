@@ -15,9 +15,9 @@ public class InteractiveShell {
     private static final Logger logger = LogManager.getLogger("InteractiveShell");
 
     /**
-     * @throws Exception if the reading or information process cannot be done
+     * Interface of the application.
      */
-    public static void loadInterface() throws Exception {
+    public static void loadInterface() {
         logger.info("App initialized!!!");
         System.out.println("Welcome to Parking System!");
 
