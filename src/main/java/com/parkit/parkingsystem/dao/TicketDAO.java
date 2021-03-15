@@ -30,9 +30,9 @@ public class TicketDAO {
 
     /**
      * @param ticket implements the data of the tickets  with come in and out times, price
-     * @return ticket
+     * @return true
      */
-    public Ticket saveTicket(Ticket ticket) {
+    public boolean saveTicket(Ticket ticket) {
         PreparedStatement ps = null;
         Connection con = null;
 
@@ -40,7 +40,7 @@ public class TicketDAO {
             con = dataBaseConfig.getConnection();
             ps = con.prepareStatement(DBConstants.SAVE_TICKET);
             //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
-            //ps.setInt(1,ticket.getId());
+            ps.setInt(1,ticket.getId());
             ps.setInt(1, ticket.getParkingSpot().getId());
             ps.setString(2, ticket.getVehicleRegNumber());
             ps.setDouble(3, ticket.getPrice());
@@ -53,7 +53,7 @@ public class TicketDAO {
             dataBaseConfig.closePreparedStatement(ps);
             dataBaseConfig.closeConnection(con);
         }
-        return ticket;
+        return true;
     }
 
     /**

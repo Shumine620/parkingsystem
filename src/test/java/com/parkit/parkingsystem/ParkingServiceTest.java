@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
- *
+ * Class Test for the parking services.
  */
 @ExtendWith(MockitoExtension.class)
 
