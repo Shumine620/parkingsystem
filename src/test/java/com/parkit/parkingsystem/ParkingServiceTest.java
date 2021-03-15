@@ -60,7 +60,7 @@ public class ParkingServiceTest {
             lenient().when(ticketDAO.updateTicket(any(Ticket.class))).thenReturn(true);
             lenient().when(parkingSpotDAO.updateParking(any(ParkingSpot.class))).thenReturn(true);
 
-            parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO, ticket);
+            parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Failed to set up test mock objects");
@@ -101,7 +101,7 @@ public class ParkingServiceTest {
         //GIVEN
         Ticket ticket = new Ticket();
        parkingService.getNextParkingNumberIfAvailable();
-        parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO, ticket);
+        parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingSpot = new ParkingSpot(3, CAR, false);
 
         //WHEN
@@ -120,9 +120,13 @@ public class ParkingServiceTest {
 
     @Test
     public void parkingServiceFullTest() throws IOException {
+
+        //WHEN
         lenient().when(inputReaderUtil.readSelection()).thenReturn(2);
-        parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO, ticket);
+        parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         lenient().when(parkingSpotDAO.getNextAvailableSlot(CAR)).thenReturn(0);
+
+        //THEN
         try {
             parkingService.getNextParkingNumberIfAvailable();
         } catch (Exception e) {

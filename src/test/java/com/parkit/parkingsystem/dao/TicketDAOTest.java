@@ -41,13 +41,12 @@ public class TicketDAOTest {
     private static InputReaderUtil inputReaderUtil;
 
     @BeforeAll
-    private static void setUp() {
+    public static void setUp() {
         ticketDAO = new TicketDAO();
         parkingSpotDAO = new ParkingSpotDAO();
         parkingSpotDAO.dataBaseConfig = dataBaseTestConfig;
         ticketDAO.dataBaseConfig = dataBaseTestConfig;
         dataBasePrepareService = new DataBasePrepareService();
-
     }
 
     /**
@@ -70,7 +69,7 @@ public class TicketDAOTest {
     public void testSaveTicket() throws IOException {
         //GIVEN
         Ticket ticket = new Ticket();
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO, ticket);
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ticket.setParkingSpot(parkingSpot);
         parkingType = ParkingType.BIKE;
         parkingSpotDAO.getNextAvailableSlot(parkingType);
@@ -84,7 +83,8 @@ public class TicketDAOTest {
         ticketDAO.saveTicket(ticket);
         //THEN
         assertNotNull(parkingSpotDAO);
-        //assertTrue(ticketDAO.saveTicket(ticket));
+      //  assertTrue(ticketDAO.saveTicket(ticket));
+
 
     }
 
@@ -95,7 +95,7 @@ public class TicketDAOTest {
     public void testGetTicket() throws IOException {
         //GIVEN
         Ticket ticket = new Ticket();
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO, ticket);
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ticket.setParkingSpot(parkingSpot);
         parkingType = ParkingType.BIKE;
         parkingSpotDAO.getNextAvailableSlot(parkingType);
@@ -119,7 +119,7 @@ public class TicketDAOTest {
     public void testUpdateTicket() throws IOException {
         //GIVEN
         Ticket ticket = new Ticket();
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO, ticket);
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ticket.setParkingSpot(parkingSpot);
         parkingType = ParkingType.BIKE;
         parkingSpotDAO.getNextAvailableSlot(parkingType);
@@ -144,7 +144,7 @@ public class TicketDAOTest {
     public void testIsReccurentUser() throws IOException {
         //GIVEN
         Ticket ticket = new Ticket();
-        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO, ticket);
+        ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ticket.setParkingSpot(parkingSpot);
         parkingType = ParkingType.BIKE;
         parkingSpotDAO.getNextAvailableSlot(parkingType);

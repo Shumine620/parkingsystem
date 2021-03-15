@@ -17,29 +17,26 @@ import java.util.Date;
 public class ParkingService {
 
     private static final Logger logger = LogManager.getLogger("ParkingService");
-    public static FareCalculatorService fareCalculatorService = new FareCalculatorService();
+    private final InputReaderUtil inputReaderUtil;
+    private final ParkingSpotDAO parkingSpotDAO;
+    private final TicketDAO ticketDAO;
+    public static final FareCalculatorService fareCalculatorService = new FareCalculatorService();
     public Ticket ticket;
-    private InputReaderUtil inputReaderUtil;
-    private ParkingSpotDAO parkingSpotDAO;
-    private TicketDAO ticketDAO;
 
 
     /**
      * @param inputReaderUtil Reading the information from the input user
      * @param parkingSpotDAO  Parking spot register in the database
      * @param ticketDAO       Ticket register in the database
-     * @param ticket          Current ticket
      */
-    public ParkingService(InputReaderUtil inputReaderUtil, ParkingSpotDAO parkingSpotDAO, TicketDAO ticketDAO, Ticket ticket) {
+    public ParkingService(InputReaderUtil inputReaderUtil, ParkingSpotDAO parkingSpotDAO, TicketDAO ticketDAO) {
         this.inputReaderUtil = inputReaderUtil;
         this.parkingSpotDAO = parkingSpotDAO;
         this.ticketDAO = ticketDAO;
-        this.ticket = ticket;
     }
 
     /**
      * Process when a vehicle is getting in the car park.
-     *
      * @see Ticket
      * @see ParkingSpotDAO
      */
@@ -54,7 +51,6 @@ public class ParkingService {
                 Date inTime = new Date();
                 Ticket ticket = new Ticket();
                 //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
-                //ticket.setId(ticketID);
                 ticket.setParkingSpot(parkingSpot);
                 ticket.setVehicleRegNumber(vehicleRegNumber);
                 ticket.setPrice(0.0);
@@ -133,7 +129,6 @@ public class ParkingService {
 
     /**
      * Process when a vehicle is exiting the car park.
-     *
      * @see Ticket
      */
     public void processExitingVehicle() {
@@ -144,6 +139,7 @@ public class ParkingService {
             ticket.setOutTime(outTime);
             ticket.setReccurentUser(ticketDAO.isReccurentUser(vehicleRegNumber));
             fareCalculatorService.calculateFare(ticket);
+
             if (ticketDAO.updateTicket(ticket)) {
                 ParkingSpot parkingSpot = ticket.getParkingSpot();
                 parkingSpot.setAvailable(true);
@@ -157,6 +153,4 @@ public class ParkingService {
             logger.error("Unable to process exiting vehicle", e);
         }
     }
-
-
 }

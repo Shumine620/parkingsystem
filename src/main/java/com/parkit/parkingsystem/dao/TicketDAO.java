@@ -35,6 +35,7 @@ public class TicketDAO {
     public Ticket saveTicket(Ticket ticket) {
         PreparedStatement ps = null;
         Connection con = null;
+
         try {
             con = dataBaseConfig.getConnection();
             ps = con.prepareStatement(DBConstants.SAVE_TICKET);
