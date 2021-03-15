@@ -83,20 +83,20 @@ public class ParkingService {
      * @return the parking spot
      * @see ParkingSpot
      */
-    public ParkingSpot getNextParkingNumberIfAvailable(){
-<span class="fc" id="L87">        int parkingNumber=0;</span>
+    public ParkingSpot getNextParkingNumberIfAvailable() {
+<span class="fc" id="L87">        int parkingNumber = 0;</span>
 <span class="fc" id="L88">        ParkingSpot parkingSpot = null;</span>
-        try{
+        try {
 <span class="fc" id="L90">            ParkingType parkingType = getVehicleType();</span>
 <span class="fc" id="L91">            parkingNumber = parkingSpotDAO.getNextAvailableSlot(parkingType);</span>
-<span class="fc bfc" id="L92" title="All 2 branches covered.">            if(parkingNumber &gt; 0){</span>
-<span class="fc" id="L93">                parkingSpot = new ParkingSpot(parkingNumber,parkingType, true);</span>
-            }else{
+<span class="fc bfc" id="L92" title="All 2 branches covered.">            if (parkingNumber &gt; 0) {</span>
+<span class="fc" id="L93">                parkingSpot = new ParkingSpot(parkingNumber, parkingType, true);</span>
+            } else {
 <span class="fc" id="L95">                throw new Exception(&quot;Error fetching parking number from DB. Parking slots might be full&quot;);</span>
             }
-<span class="fc" id="L97">        }catch(IllegalArgumentException ie){</span>
+<span class="fc" id="L97">        } catch (IllegalArgumentException ie) {</span>
 <span class="fc" id="L98">            logger.error(&quot;Error parsing user input for type of vehicle&quot;, ie);</span>
-<span class="fc" id="L99">        }catch(Exception e){</span>
+<span class="fc" id="L99">        } catch (Exception e) {</span>
 <span class="fc" id="L100">            logger.error(&quot;Error fetching next available parking slot&quot;, e);</span>
 <span class="fc" id="L101">        }</span>
 <span class="fc" id="L102">        return parkingSpot;</span>

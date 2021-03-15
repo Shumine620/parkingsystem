@@ -22,7 +22,7 @@ import com.parkit.parkingsystem.model.Ticket;
 <span class="fc" id="L22">        long inHour = ticket.getInTime().getTime();</span>
 <span class="fc" id="L23">        long outHour = ticket.getOutTime().getTime();</span>
 
-<span class="fc" id="L25">       double duration = (outHour - inHour) / (60 * 60 * 1000.00); // Convert duration in milliseconds then in hour</span>
+<span class="fc" id="L25">        double duration = (outHour - inHour) / (60 * 60 * 1000.00); // Convert duration in milliseconds then in hour</span>
 
 <span class="fc bfc" id="L27" title="All 2 branches covered.">        if (duration &gt; 0.5) {</span>
 
