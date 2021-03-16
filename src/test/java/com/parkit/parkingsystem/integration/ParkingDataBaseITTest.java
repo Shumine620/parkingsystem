@@ -108,7 +108,7 @@ public class ParkingDataBaseITTest {
         //WHEN
         Thread.sleep(4000);
         parkingService.processExitingVehicle();
-        ticket = ticketDAO.getTicket("ABCDEF");
+        ticket = ticketDAO.getTicket("PLMKP");
         fareCalculatorService.calculateFare(ticket);
 
         //THEN
