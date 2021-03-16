@@ -122,8 +122,7 @@ public class ParkingDataBaseITTest {
     @Test
     public void getNextAvailableSlot(){
         //GIVEN
-
-       // parkingSpot = new ParkingSpot(1, CAR, false);
+        new ParkingSpot(1, CAR, false);
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         //WHEN
         parkingService.processIncomingVehicle();
