@@ -7,7 +7,6 @@ import com.parkit.parkingsystem.model.ParkingSpot;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +23,7 @@ public class ParkingSpotDAO {
      * @param parkingType Type of vehicles allowed in the parking
      * @return the number of the slot to go park in when available
      */
-    public int getNextAvailableSlot(ParkingType parkingType){
+    public int getNextAvailableSlot(ParkingType parkingType) {
         Connection con = null;
         int result = -1;
         PreparedStatement ps = null;
@@ -54,7 +53,7 @@ public class ParkingSpotDAO {
      * @return True when the parkingSpot is updated
      */
 
-    public boolean updateParking(ParkingSpot parkingSpot){
+    public boolean updateParking(ParkingSpot parkingSpot) {
 
         Connection con = null;
         try {

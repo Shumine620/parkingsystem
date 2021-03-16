@@ -15,13 +15,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-
-import java.io.IOException;
-
 import static com.parkit.parkingsystem.constants.ParkingType.CAR;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.lenient;
 
@@ -69,11 +65,9 @@ public class ParkingDataBaseITTest {
         dataBasePrepareService.clearDataBaseEntries();
     }
 
-    /**
-     * @throws IOException Exception if the parking cannot be done
-     */
-    @Test  //Check that a ticket is actually saved in DB and Parking table is updated with availability
+        @Test  //Check that a ticket is actually saved in DB and Parking table is updated with availability
     public void testParkingACar() {
+
         //GIVEN
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingType = ParkingType.CAR;
@@ -82,14 +76,12 @@ public class ParkingDataBaseITTest {
 
         //WHEN
         parkingService.processIncomingVehicle();
-
         Ticket ticket1 = ticketDAO.getTicket("PLMKP");
 
         //THEN
         assertEquals(1, ticket1.getId());
         assertNotNull(parkingSpotDAO);
         assertThat(parkingSpotDAO.getNextAvailableSlot(parkingType)).isNotEqualTo(1);
-
     }
 
     /**
@@ -121,6 +113,7 @@ public class ParkingDataBaseITTest {
 
     @Test
     public void getNextAvailableSlot() {
+
         //GIVEN
         new ParkingSpot(1, CAR, false);
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);

@@ -80,14 +80,15 @@ public class TicketDAOTest {
         ticket.setInTime(new Date());
         ticket.setOutTime(new Date());
         ticketDAO.saveTicket(ticket);
+
         //THEN
         assertNotNull(parkingSpotDAO);
         assertTrue(ticketDAO.saveTicket(ticket));
-
     }
 
     @Test
     public void testGetTicket(){
+
         //GIVEN
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -118,18 +119,18 @@ public class TicketDAOTest {
         //WHEN
         parkingService.processIncomingVehicle();
         ticket.setVehicleRegNumber("ABCDEF");
-
         ticket.setPrice(1.0);
         ticket.setInTime(new Date());
         ticket.setOutTime(new Date());
+
         //THEN
         assertNotNull(parkingSpotDAO);
         assertTrue(ticketDAO.updateTicket(ticket));
-
     }
 
     @Test
     public void testIsReccurentUser(){
+
         //GIVEN
         Ticket ticket = new Ticket();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
@@ -144,6 +145,7 @@ public class TicketDAOTest {
         ticket.setPrice(2.0);
         ticket.setInTime(new Date());
         ticket.setOutTime(new Date());
+
         //THEN
         assertNotNull(parkingSpotDAO);
     }

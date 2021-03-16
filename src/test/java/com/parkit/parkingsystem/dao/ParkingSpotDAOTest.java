@@ -1,6 +1,5 @@
 package com.parkit.parkingsystem.dao;
 
-import com.parkit.parkingsystem.integration.config.DataBaseTestConfig;
 import com.parkit.parkingsystem.integration.service.DataBasePrepareService;
 import com.parkit.parkingsystem.model.ParkingSpot;
 import com.parkit.parkingsystem.service.ParkingService;
@@ -18,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * Testing the link with the database and the parking spots data enters.
  */
 class ParkingSpotDAOTest {
-    private static DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
     private static DataBasePrepareService dataBasePrepareService;
     private static ParkingSpotDAO parkingSpotDAO;
     private static ParkingSpot parkingSpot;
@@ -44,10 +42,12 @@ class ParkingSpotDAOTest {
      */
     @Test
     public void getNextAvailableSlot(){
+
         //GIVEN
         parkingSpot = new ParkingSpot(1, CAR, true);
 
         //WHEN
+        inputReaderUtil= new InputReaderUtil();
         parkingService.processIncomingVehicle();
         parkingSpotDAO.updateParking(parkingSpot);
 
@@ -60,14 +60,15 @@ class ParkingSpotDAOTest {
      */
     @Test
     void updateParking(){
+
         //GIVEN
         parkingSpot = new ParkingSpot(2, CAR, false);
 
         //WHEN
         parkingSpotDAO.updateParking(parkingSpot);
-        assertFalse(parkingSpot.isAvailable());
 
         //THEN
+        assertFalse(parkingSpot.isAvailable());
         assertTrue(parkingSpotDAO.updateParking(parkingSpot));
     }
 
@@ -76,7 +77,9 @@ class ParkingSpotDAOTest {
      */
     @Test
     public void updateParkingWithNullParkingTypeTest(){
+
         //WHEN
+        parkingSpotDAO.updateParking(parkingSpot);
         ParkingSpot parkingSpot = new ParkingSpot(1, null, false);
 
         //THEN

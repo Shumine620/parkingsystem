@@ -67,7 +67,7 @@
 <th>Missing Classes</th></tr>
 <tr class="b">
 <td>14</td>
-<td>9</td>
+<td>7</td>
 <td>0</td>
 <td>0</td></tr></table></section><section>
 <h2><a name="Files"></a>Files</h2>
@@ -85,96 +85,73 @@
 <td><a href="#com.parkit.parkingsystem.dao.TicketDAO">com.parkit.parkingsystem.dao.TicketDAO</a></td>
 <td>3</td></tr>
 <tr class="a">
-<td><a href="#com.parkit.parkingsystem.service.InteractiveShell">com.parkit.parkingsystem.service.InteractiveShell</a></td>
+<td><a href="#com.parkit.parkingsystem.service.ParkingService">com.parkit.parkingsystem.service.ParkingService</a></td>
 <td>1</td></tr>
 <tr class="b">
-<td><a href="#com.parkit.parkingsystem.service.ParkingService">com.parkit.parkingsystem.service.ParkingService</a></td>
-<td>2</td></tr>
-<tr class="a">
 <td><a href="#com.parkit.parkingsystem.util.InputReaderUtil">com.parkit.parkingsystem.util.InputReaderUtil</a></td>
 <td>1</td></tr></table></section><a name="com.parkit.parkingsystem.config.DataBaseConfig"></a><section>
 <h3><a name="com.parkit.parkingsystem.config.DataBaseConfig"></a>com.parkit.parkingsystem.config.DataBaseConfig</h3>
 <table border="0" class="bodyTable">
-<tr class="b">
+<tr class="a">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="a">
+<tr class="b">
 <td>Hardcoded constant database password in com.parkit.parkingsystem.config.DataBaseConfig.getConnection()</td>
 <td>SECURITY</td>
 <td><a class="externalLink" href="https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html#DMI_CONSTANT_DB_PASSWORD">DMI_CONSTANT_DB_PASSWORD</a></td>
-<td>27</td>
+<td>26</td>
 <td>Medium</td></tr></table></section><a name="com.parkit.parkingsystem.dao.ParkingSpotDAO"></a><section>
 <h3><a name="com.parkit.parkingsystem.dao.ParkingSpotDAO"></a>com.parkit.parkingsystem.dao.ParkingSpotDAO</h3>
 <table border="0" class="bodyTable">
-<tr class="b">
+<tr class="a">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="a">
+<tr class="b">
 <td>com.parkit.parkingsystem.dao.ParkingSpotDAO.updateParking(ParkingSpot) may fail to clean up java.sql.Statement on checked exception</td>
 <td>EXPERIMENTAL</td>
 <td><a class="externalLink" href="https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE</a></td>
-<td>62</td>
+<td>61</td>
 <td>Medium</td></tr></table></section><a name="com.parkit.parkingsystem.dao.TicketDAO"></a><section>
 <h3><a name="com.parkit.parkingsystem.dao.TicketDAO"></a>com.parkit.parkingsystem.dao.TicketDAO</h3>
 <table border="0" class="bodyTable">
-<tr class="b">
+<tr class="a">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="a">
+<tr class="b">
 <td>com.parkit.parkingsystem.dao.TicketDAO.getTicket(String) may fail to clean up java.sql.ResultSet on checked exception</td>
 <td>EXPERIMENTAL</td>
 <td><a class="externalLink" href="https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE</a></td>
 <td>71</td>
 <td>Medium</td></tr>
-<tr class="b">
+<tr class="a">
 <td>com.parkit.parkingsystem.dao.TicketDAO.getTicket(String) may fail to clean up java.sql.Statement on checked exception</td>
 <td>EXPERIMENTAL</td>
 <td><a class="externalLink" href="https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE</a></td>
 <td>68</td>
 <td>Medium</td></tr>
-<tr class="a">
+<tr class="b">
 <td>com.parkit.parkingsystem.dao.TicketDAO.updateTicket(Ticket) may fail to clean up java.sql.Statement on checked exception</td>
 <td>EXPERIMENTAL</td>
 <td><a class="externalLink" href="https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE</a></td>
 <td>100</td>
-<td>Medium</td></tr></table></section><a name="com.parkit.parkingsystem.service.InteractiveShell"></a><section>
-<h3><a name="com.parkit.parkingsystem.service.InteractiveShell"></a>com.parkit.parkingsystem.service.InteractiveShell</h3>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Bug</th>
-<th>Category</th>
-<th>Details</th>
-<th>Line</th>
-<th>Priority</th></tr>
-<tr class="a">
-<td>Alimentation &#xe0; perte d'une variable locale dans la m&#xe9;thode com.parkit.parkingsystem.service.InteractiveShell.loadInterface()</td>
-<td>STYLE</td>
-<td><a class="externalLink" href="https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html#DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE</a></td>
-<td>28</td>
-<td>High</td></tr></table></section><a name="com.parkit.parkingsystem.service.ParkingService"></a><section>
+<td>Medium</td></tr></table></section><a name="com.parkit.parkingsystem.service.ParkingService"></a><section>
 <h3><a name="com.parkit.parkingsystem.service.ParkingService"></a>com.parkit.parkingsystem.service.ParkingService</h3>
 <table border="0" class="bodyTable">
-<tr class="b">
+<tr class="a">
 <th>Bug</th>
 <th>Category</th>
 <th>Details</th>
 <th>Line</th>
 <th>Priority</th></tr>
-<tr class="a">
-<td>Alimentation &#xe0; perte d'une variable locale dans la m&#xe9;thode com.parkit.parkingsystem.service.ParkingService.processIncomingVehicle()</td>
-<td>STYLE</td>
-<td><a class="externalLink" href="https://spotbugs.readthedocs.io/en/latest/bugDescriptions.html#DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE</a></td>
-<td>60</td>
-<td>Medium</td></tr>
 <tr class="b">
 <td>Unused public or protected field: com.parkit.parkingsystem.service.ParkingService.ticket</td>
 <td>STYLE</td>

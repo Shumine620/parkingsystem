@@ -7,7 +7,6 @@ import com.parkit.parkingsystem.model.ParkingSpot;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,35 +15,35 @@ import java.sql.SQLException;
 /**
  * Class making the link with the database.
  */
-<span class="fc" id="L19">public class ParkingSpotDAO {</span>
-<span class="fc" id="L20">    private static final Logger logger = LogManager.getLogger(&quot;ParkingSpotDAO&quot;);</span>
-<span class="fc" id="L21">    public DataBaseConfig dataBaseConfig = new DataBaseConfig();</span>
+<span class="fc" id="L18">public class ParkingSpotDAO {</span>
+<span class="fc" id="L19">    private static final Logger logger = LogManager.getLogger(&quot;ParkingSpotDAO&quot;);</span>
+<span class="fc" id="L20">    public DataBaseConfig dataBaseConfig = new DataBaseConfig();</span>
 
     /**
      * @param parkingType Type of vehicles allowed in the parking
      * @return the number of the slot to go park in when available
      */
-    public int getNextAvailableSlot(ParkingType parkingType){
-<span class="fc" id="L28">        Connection con = null;</span>
-<span class="fc" id="L29">        int result = -1;</span>
-<span class="fc" id="L30">        PreparedStatement ps = null;</span>
-<span class="fc" id="L31">        ResultSet rs = null;</span>
+    public int getNextAvailableSlot(ParkingType parkingType) {
+<span class="fc" id="L27">        Connection con = null;</span>
+<span class="fc" id="L28">        int result = -1;</span>
+<span class="fc" id="L29">        PreparedStatement ps = null;</span>
+<span class="fc" id="L30">        ResultSet rs = null;</span>
         try {
-<span class="fc" id="L33">            con = dataBaseConfig.getConnection();</span>
-<span class="fc" id="L34">            ps = con.prepareStatement(DBConstants.GET_NEXT_PARKING_SPOT);</span>
-<span class="fc" id="L35">            ps.setString(1, parkingType.toString());</span>
-<span class="fc" id="L36">            rs = ps.executeQuery();</span>
-<span class="pc bpc" id="L37" title="1 of 2 branches missed.">            if (rs.next()) {</span>
-<span class="fc" id="L38">                result = rs.getInt(1);</span>
+<span class="fc" id="L32">            con = dataBaseConfig.getConnection();</span>
+<span class="fc" id="L33">            ps = con.prepareStatement(DBConstants.GET_NEXT_PARKING_SPOT);</span>
+<span class="fc" id="L34">            ps.setString(1, parkingType.toString());</span>
+<span class="fc" id="L35">            rs = ps.executeQuery();</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">            if (rs.next()) {</span>
+<span class="fc" id="L37">                result = rs.getInt(1);</span>
             }
-<span class="nc" id="L40">        } catch (SQLException | ClassNotFoundException ex) {</span>
-<span class="nc" id="L41">            logger.error(&quot;Error fetching next available slot&quot;, ex);</span>
+<span class="nc" id="L39">        } catch (SQLException | ClassNotFoundException ex) {</span>
+<span class="nc" id="L40">            logger.error(&quot;Error fetching next available slot&quot;, ex);</span>
         } finally {
-<span class="fc" id="L43">            dataBaseConfig.closeConnection(con);</span>
-<span class="fc" id="L44">            dataBaseConfig.closeResultSet(rs);</span>
-<span class="fc" id="L45">            dataBaseConfig.closePreparedStatement(ps);</span>
+<span class="fc" id="L42">            dataBaseConfig.closeConnection(con);</span>
+<span class="fc" id="L43">            dataBaseConfig.closeResultSet(rs);</span>
+<span class="fc" id="L44">            dataBaseConfig.closePreparedStatement(ps);</span>
         }
-<span class="fc" id="L47">        return result;</span>
+<span class="fc" id="L46">        return result;</span>
     }
 
     /**
@@ -54,22 +53,22 @@ import java.sql.SQLException;
      * @return True when the parkingSpot is updated
      */
 
-    public boolean updateParking(ParkingSpot parkingSpot){
+    public boolean updateParking(ParkingSpot parkingSpot) {
 
-<span class="fc" id="L59">        Connection con = null;</span>
+<span class="fc" id="L58">        Connection con = null;</span>
         try {
-<span class="fc" id="L61">            con = dataBaseConfig.getConnection();</span>
-<span class="fc" id="L62">            PreparedStatement ps = con.prepareStatement(DBConstants.UPDATE_PARKING_SPOT);</span>
-<span class="fc" id="L63">            ps.setBoolean(1, parkingSpot.isAvailable());</span>
-<span class="fc" id="L64">            ps.setInt(2, parkingSpot.getId());</span>
-<span class="fc" id="L65">            int updateRowCount = ps.executeUpdate();</span>
-<span class="fc" id="L66">            dataBaseConfig.closePreparedStatement(ps);</span>
-<span class="pc bpc" id="L67" title="1 of 2 branches missed.">            return (updateRowCount == 1);</span>
-<span class="fc" id="L68">        } catch (Exception ex) {</span>
-<span class="fc" id="L69">            logger.error(&quot;Error updating parking info&quot;, ex);</span>
-<span class="fc" id="L70">            return false;</span>
+<span class="fc" id="L60">            con = dataBaseConfig.getConnection();</span>
+<span class="fc" id="L61">            PreparedStatement ps = con.prepareStatement(DBConstants.UPDATE_PARKING_SPOT);</span>
+<span class="fc" id="L62">            ps.setBoolean(1, parkingSpot.isAvailable());</span>
+<span class="fc" id="L63">            ps.setInt(2, parkingSpot.getId());</span>
+<span class="fc" id="L64">            int updateRowCount = ps.executeUpdate();</span>
+<span class="fc" id="L65">            dataBaseConfig.closePreparedStatement(ps);</span>
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">            return (updateRowCount == 1);</span>
+<span class="fc" id="L67">        } catch (Exception ex) {</span>
+<span class="fc" id="L68">            logger.error(&quot;Error updating parking info&quot;, ex);</span>
+<span class="fc" id="L69">            return false;</span>
         } finally {
-<span class="fc" id="L72">            dataBaseConfig.closeConnection(con);</span>
+<span class="fc" id="L71">            dataBaseConfig.closeConnection(con);</span>
         }
     }
 }
