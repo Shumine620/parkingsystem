@@ -26,21 +26,20 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.lenient;
 
 /**
- *Class Test for the parking database functions.
+ * Class Test for the parking database functions.
  */
 @ExtendWith(MockitoExtension.class)
 
 public class ParkingDataBaseITTest {
 
     private static final DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
+    @Mock
+    public static InputReaderUtil inputReaderUtil;
     private static ParkingSpotDAO parkingSpotDAO;
     private static TicketDAO ticketDAO;
     private static DataBasePrepareService dataBasePrepareService;
     private static FareCalculatorService fareCalculatorService;
     private static ParkingType parkingType;
-
-    @Mock
-    public static InputReaderUtil inputReaderUtil;
 
     @BeforeAll
     public static void setUp() {
@@ -53,20 +52,20 @@ public class ParkingDataBaseITTest {
     }
 
     /**
+     *
+     */
+    @AfterAll
+    public static void tearDown() {
+        dataBasePrepareService.clearDataBaseEntries();
+    }
+
+    /**
      * @throws Exception when reading cannot be done
      */
     @BeforeEach
     public void setUpPerTest() throws Exception {
         lenient().when(inputReaderUtil.readSelection()).thenReturn(1);
-        lenient().when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
-        dataBasePrepareService.clearDataBaseEntries();
-    }
-
-    /**
-     *
-     */
-    @AfterAll
-    public static void tearDown() {
+        lenient().when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("PLMKP");
         dataBasePrepareService.clearDataBaseEntries();
     }
 
@@ -79,17 +78,18 @@ public class ParkingDataBaseITTest {
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         parkingType = ParkingType.CAR;
         parkingSpotDAO.getNextAvailableSlot(parkingType);
+        parkingSpotDAO = new ParkingSpotDAO();
 
         //WHEN
         parkingService.processIncomingVehicle();
-        Ticket ticket = ticketDAO.getTicket("ABCDEF");
+
+        Ticket ticket1 = ticketDAO.getTicket("PLMKP");
 
         //THEN
-        assertEquals(1, ticket.getId());// Check ticket with RegNumber
+        assertEquals(1, ticket1.getId());
         assertNotNull(parkingSpotDAO);
-        assertEquals(2, parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR)); //Check that if slot 1 is busy, slot 2 is allocated
-        assertFalse(ticketDAO.getTicket("ABCDEF").getParkingSpot().isAvailable());
-        assertThat(ticketDAO);
+        assertThat(parkingSpotDAO.getNextAvailableSlot(parkingType)).isNotEqualTo(1);
+
     }
 
     /**
@@ -120,7 +120,7 @@ public class ParkingDataBaseITTest {
     }
 
     @Test
-    public void getNextAvailableSlot(){
+    public void getNextAvailableSlot() {
         //GIVEN
         new ParkingSpot(1, CAR, false);
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
